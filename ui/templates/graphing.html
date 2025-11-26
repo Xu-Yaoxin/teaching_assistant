@@ -1,0 +1,614 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Math Function Graphing Tool</title>
+    <!-- Include Desmos API -->
+    <script src="https://www.desmos.com/api/v1.9/calculator.js?apiKey=dcb31709b452b1cf9dc26972add0fda6"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+        }
+
+        body {
+            background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+            min-height: 100vh;
+            padding: 15px;
+        }
+
+        .container {
+            background-color: rgba(255, 255, 255, 0.95);
+            border-radius: 12px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            width: 95vw;
+            height: 90vh;
+            max-width: 1800px;
+            margin: 0 auto;
+            padding: 20px;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 15px;
+            position: relative;
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: linear-gradient(to right, #3498db, #2c3e50);
+            color: white;
+            border: none;
+            border-radius: 50%;
+            width: 35px;
+            height: 35px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .back-btn:hover {
+            transform: translateY(-50%) scale(1.05);
+        }
+
+        h1 {
+            color: #2c3e50;
+            font-size: 1.5rem;
+        }
+
+        .main-content {
+            display: flex;
+            gap: 20px;
+            flex: 1;
+            overflow: hidden;
+        }
+
+        .sidebar {
+            width: 320px;
+            background: #f8f9fa;
+            border-radius: 10px;
+            padding: 20px;
+            overflow-y: auto;
+        }
+
+        .graph-container {
+            flex: 1;
+            background: white;
+            border-radius: 10px;
+            border: 2px solid #ddd;
+            display: flex;
+            flex-direction: column;
+        }
+
+        #calculator {
+            flex: 1;
+        }
+
+        .result-panel {
+            background: #f8f9fa;
+            border-top: 2px solid #ddd;
+            padding: 15px;
+            max-height: 200px;
+            overflow-y: auto;
+            display: none;
+        }
+
+        .result-panel.active {
+            display: block;
+        }
+
+        .result-item {
+            background: white;
+            padding: 12px;
+            margin-bottom: 10px;
+            border-radius: 8px;
+            border-left: 4px solid #2196f3;
+        }
+
+        .result-item h4 {
+            color: #2c3e50;
+            margin-bottom: 5px;
+            font-size: 0.95rem;
+        }
+
+        .result-item p {
+            color: #555;
+            font-size: 1.1rem;
+            font-weight: 500;
+        }
+
+        .derivative-result {
+            border-left-color: #c74440;
+        }
+
+        .integral-result {
+            border-left-color: #388c46;
+        }
+
+        .template-section {
+            margin-bottom: 20px;
+        }
+
+        .template-section h3 {
+            color: #2c3e50;
+            margin-bottom: 10px;
+            font-size: 1.1rem;
+        }
+
+        .template-btn {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 8px;
+            background: white;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+            text-align: left;
+        }
+
+        .template-btn:hover {
+            background: #e9ecef;
+            border-color: #3498db;
+        }
+
+        .template-btn i {
+            margin-right: 8px;
+            color: #3498db;
+        }
+
+        .info-box {
+            background: #e3f2fd;
+            border-left: 4px solid #2196f3;
+            padding: 12px;
+            margin-top: 15px;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            color: #1565c0;
+        }
+
+        .info-box i {
+            margin-right: 8px;
+        }
+
+        .integral-info-box {
+            background: #e8f5e9;
+            border-left-color: #388c46;
+            color: #2e7d32;
+            margin-bottom: 15px;
+        }
+
+        .clear-btn {
+            width: 100%;
+            padding: 10px;
+            margin-top: 10px;
+            background: #ff6b6b;
+            color: white;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+
+        .clear-btn:hover {
+            background: #ff5252;
+        }
+
+        .slider-control {
+            margin-top: 10px;
+            padding: 10px;
+            background: white;
+            border-radius: 8px;
+            border: 1px solid #ddd;
+        }
+
+        .slider-control label {
+            display: block;
+            margin-bottom: 5px;
+            font-size: 0.9rem;
+            color: #555;
+        }
+
+        .slider-control input[type="range"] {
+            width: 100%;
+            margin: 5px 0;
+        }
+
+        .slider-value {
+            display: inline-block;
+            min-width: 40px;
+            text-align: center;
+            font-weight: bold;
+            color: #388c46;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <button class="back-btn" onclick="window.location.href='/'">
+                <i class="fas fa-arrow-left"></i>
+            </button>
+            <h1><i class="fas fa-chart-line"></i> Math Function Graphing Tool</h1>
+            <p>Visualize Mathematical Concepts - Functions, Integrals & More</p>
+        </div>
+
+        <div class="main-content">
+            <div class="sidebar">
+                <div class="template-section">
+                    <h3><i class="fas fa-star"></i> Quick Templates</h3>
+                    <button class="template-btn" onclick="loadTemplate('basic')">
+                        <i class="fas fa-wave-square"></i> Basic Functions
+                    </button>
+                    <button class="template-btn" onclick="loadTemplate('trig')">
+                        <i class="fas fa-water"></i> Trigonometric Functions
+                    </button>
+                    <button class="template-btn" onclick="loadTemplate('parametric')">
+                        <i class="fas fa-bezier-curve"></i> Parametric Equations
+                    </button>
+                    <button class="template-btn" onclick="loadTemplate('polar')">
+                        <i class="fas fa-circle-notch"></i> Polar Coordinates
+                    </button>
+                    <button class="template-btn" onclick="loadTemplate('inequality')">
+                        <i class="fas fa-less-than-equal"></i> Inequality Regions
+                    </button>
+                    <button class="template-btn" onclick="loadTemplate('integral')">
+                        <i class="fas fa-calculator"></i> Quick Integral Calculation
+                    </button>
+                    <button class="clear-btn" onclick="clearAll()">
+                        <i class="fas fa-trash"></i> Clear All
+                    </button>
+                </div>
+
+                <div id="integralControls"></div>
+
+                <div class="info-box">
+                    <i class="fas fa-info-circle"></i>
+                    <strong>Tip:</strong> For more detailed mathematical explanations and steps, please return to the main interface.
+                </div>
+            </div>
+
+            <div class="graph-container">
+                <div id="calculator"></div>
+                <div id="resultPanel" class="result-panel"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Initialize Desmos Calculator
+        const elt = document.getElementById('calculator');
+        const calculator = Desmos.GraphingCalculator(elt, {
+            keypad: true,
+            expressions: true,
+            settingsMenu: true,
+            zoomButtons: true,
+            expressionsTopbar: true
+        });
+
+        const resultPanel = document.getElementById('resultPanel');
+        const integralControls = document.getElementById('integralControls');
+        let processedExpressions = new Set();
+        let integralCounter = 0;
+        let currentIntegrals = {};
+
+        // Listen for expression changes
+        calculator.observeEvent('change', () => {
+            const state = calculator.getState();
+            processExpressions(state.expressions.list);
+        });
+
+        function processExpressions(expressions) {
+            expressions.forEach((expr, index) => {
+                if (!expr.latex || processedExpressions.has(expr.id)) return;
+
+                const latex = expr.latex;
+
+                // Detect integral expressions
+                if (isIntegralExpression(latex)) {
+                    processedExpressions.add(expr.id);
+                    handleIntegral(expr, index);
+                }
+                // Detect derivative expressions
+                else if (isDerivativeExpression(latex)) {
+                    processedExpressions.add(expr.id);
+                    handleDerivative(expr, index);
+                }
+            });
+        }
+
+        function isIntegralExpression(latex) {
+            return latex.includes('\\int') || latex.match(/∫/);
+        }
+
+        function isDerivativeExpression(latex) {
+            return latex.includes('\\frac{d}{dx}') || latex.includes("'") || latex.includes('\\prime');
+        }
+
+        function handleIntegral(expr, index) {
+            // Try to extract integral information
+            const match = expr.latex.match(/\\int_{(.+?)}\\^{(.+?)}(.+?)d([xy])/);
+            
+            if (match) {
+                const lower = match[1];
+                const upper = match[2];
+                const func = match[3];
+                const variable = match[4];
+
+                const integralId = `int_${integralCounter++}`;
+                currentIntegrals[integralId] = {
+                    exprId: expr.id,
+                    lower: parseFloat(lower) || 0,
+                    upper: parseFloat(upper) || 1,
+                    variable: variable
+                };
+
+                // Create slider controls
+                createIntegralControls(integralId, lower, upper, variable);
+
+                // Create helper variables
+                calculator.setExpression({ 
+                    id: `${integralId}_lower`, 
+                    latex: `a_{${index}}=${lower}`,
+                    hidden: true
+                });
+                calculator.setExpression({ 
+                    id: `${integralId}_upper`, 
+                    latex: `b_{${index}}=${upper}`,
+                    hidden: true
+                });
+                
+                // Extract and clean function part
+                const funcSimple = func.replace(/[()]/g, '').replace(/\s/g, '');
+                
+                // Define function
+                calculator.setExpression({ 
+                    id: `${integralId}_func`, 
+                    latex: `f_{${index}}(${variable})=${funcSimple}`,
+                    color: '#2d70b3',
+                    lineWidth: 2
+                });
+
+                // Draw shaded area (based on variable type)
+                if (variable === 'x') {
+                    calculator.setExpression({ 
+                        id: `${integralId}_area`, 
+                        latex: `0\\le y\\le f_{${index}}(x)\\left\\{a_{${index}}\\le x\\le b_{${index}}\\right\\}`,
+                        color: '#388c46',
+                        fillOpacity: 0.4,
+                        lineOpacity: 0
+                    });
+
+                    // Boundary lines
+                    calculator.setExpression({ 
+                        id: `${integralId}_line_a`, 
+                        latex: `x=a_{${index}}`,
+                        color: '#ff6b6b',
+                        lineStyle: Desmos.Styles.DASHED,
+                        lineWidth: 1.5
+                    });
+                    calculator.setExpression({ 
+                        id: `${integralId}_line_b`, 
+                        latex: `x=b_{${index}}`,
+                        color: '#ff6b6b',
+                        lineStyle: Desmos.Styles.DASHED,
+                        lineWidth: 1.5
+                    });
+                } else if (variable === 'y') {
+                    calculator.setExpression({ 
+                        id: `${integralId}_area`, 
+                        latex: `0\\le x\\le f_{${index}}(y)\\left\\{a_{${index}}\\le y\\le b_{${index}}\\right\\}`,
+                        color: '#388c46',
+                        fillOpacity: 0.4,
+                        lineOpacity: 0
+                    });
+
+                    // Boundary lines
+                    calculator.setExpression({ 
+                        id: `${integralId}_line_a`, 
+                        latex: `y=a_{${index}}`,
+                        color: '#ff6b6b',
+                        lineStyle: Desmos.Styles.DASHED,
+                        lineWidth: 1.5
+                    });
+                    calculator.setExpression({ 
+                        id: `${integralId}_line_b`, 
+                        latex: `y=b_{${index}}`,
+                        color: '#ff6b6b',
+                        lineStyle: Desmos.Styles.DASHED,
+                        lineWidth: 1.5
+                    });
+                }
+
+                // Keep original integral expression visible
+                calculator.setExpression({
+                    id: expr.id,
+                    latex: expr.latex,
+                    hidden: false,
+                    color: '#388c46'
+                });
+
+                // Show result
+                showIntegralResult(expr.latex, integralId);
+            }
+        }
+
+        function createIntegralControls(integralId, lower, upper, variable) {
+            const controlDiv = document.createElement('div');
+            controlDiv.className = 'slider-control';
+            controlDiv.id = `control_${integralId}`;
+            
+            const lowerVal = parseFloat(lower) || 0;
+            const upperVal = parseFloat(upper) || 1;
+            
+            controlDiv.innerHTML = `
+                <label><i class="fas fa-sliders-h"></i> Integral Range Control (Variable: ${variable})</label>
+                <div style="margin: 10px 0;">
+                    <label style="font-size: 0.85rem;">Lower Bound: <span class="slider-value" id="${integralId}_lower_val">${lowerVal}</span></label>
+                    <input type="range" id="${integralId}_lower_slider" 
+                           min="-10" max="10" step="0.1" value="${lowerVal}"
+                           oninput="updateIntegralBound('${integralId}', 'lower', this.value)">
+                </div>
+                <div style="margin: 10px 0;">
+                    <label style="font-size: 0.85rem;">Upper Bound: <span class="slider-value" id="${integralId}_upper_val">${upperVal}</span></label>
+                    <input type="range" id="${integralId}_upper_slider" 
+                           min="-10" max="10" step="0.1" value="${upperVal}"
+                           oninput="updateIntegralBound('${integralId}', 'upper', this.value)">
+                </div>
+                <button onclick="removeIntegral('${integralId}')" 
+                        style="width: 100%; padding: 5px; background: #ff6b6b; color: white; border: none; border-radius: 5px; cursor: pointer; margin-top: 5px;">
+                    <i class="fas fa-times"></i> Remove This Integral
+                </button>
+            `;
+            
+            integralControls.appendChild(controlDiv);
+        }
+
+        function updateIntegralBound(integralId, bound, value) {
+            const integral = currentIntegrals[integralId];
+            if (!integral) return;
+
+            const numValue = parseFloat(value);
+            document.getElementById(`${integralId}_${bound}_val`).textContent = numValue.toFixed(1);
+            
+            // Update variable in Desmos
+            const state = calculator.getState();
+            const expressions = state.expressions.list;
+            
+            for (let expr of expressions) {
+                if (expr.id === `${integralId}_${bound}`) {
+                    const match = expr.latex.match(/([ab])_{(\d+)}=/);
+                    if (match) {
+                        const varName = match[1];
+                        const index = match[2];
+                        calculator.setExpression({
+                            id: `${integralId}_${bound}`,
+                            latex: `${varName}_{${index}}=${numValue}`,
+                            hidden: true
+                        });
+                    }
+                }
+            }
+        }
+
+        function removeIntegral(integralId) {
+            const integral = currentIntegrals[integralId];
+            if (!integral) return;
+
+            // Remove all related expressions
+            calculator.removeExpression({ id: `${integralId}_lower` });
+            calculator.removeExpression({ id: `${integralId}_upper` });
+            calculator.removeExpression({ id: `${integralId}_func` });
+            calculator.removeExpression({ id: `${integralId}_area` });
+            calculator.removeExpression({ id: `${integralId}_line_a` });
+            calculator.removeExpression({ id: `${integralId}_line_b` });
+            calculator.removeExpression({ id: integral.exprId });
+
+            // Remove control panel
+            const controlDiv = document.getElementById(`control_${integralId}`);
+            if (controlDiv) controlDiv.remove();
+
+            delete currentIntegrals[integralId];
+            processedExpressions.delete(integral.exprId);
+        }
+
+        function handleDerivative(expr, index) {
+            // Hide derivative graph
+            calculator.setExpression({
+                id: expr.id,
+                latex: expr.latex,
+                hidden: true
+            });
+
+            // Show result only
+            showDerivativeResult(expr.latex);
+        }
+
+        function showIntegralResult(latex, integralId) {
+            resultPanel.classList.add('active');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = 'result-item integral-result';
+            resultDiv.id = `result_${integralId}`;
+            resultPanel.appendChild(resultDiv);
+        }
+
+        function showDerivativeResult(latex) {
+            resultPanel.classList.add('active');
+            const resultDiv = document.createElement('div');
+            resultDiv.className = 'result-item derivative-result';
+            resultPanel.appendChild(resultDiv);
+        }
+
+        function clearAll() {
+            calculator.setBlank();
+            resultPanel.innerHTML = '';
+            resultPanel.classList.remove('active');
+            integralControls.innerHTML = '';
+            processedExpressions.clear();
+            currentIntegrals = {};
+            integralCounter = 0;
+        }
+
+        // Template functions
+        function loadTemplate(type) {
+            clearAll();
+            
+            switch(type) {
+                case 'basic':
+                    calculator.setExpression({ id: 'graph1', latex: 'y=x^2', color: '#2d70b3' });
+                    break;
+                
+                case 'trig':
+                    calculator.setExpression({ id: 'graph1', latex: 'y=\\sin(x)', color: '#c74440' });
+                    break;
+                
+                case 'integral':
+                    // Add an integral template expression
+                    calculator.setExpression({ 
+                        id: `integral_${Date.now()}`, 
+                        latex: '\\int_{0}^{2}x^{2}dx',
+                        color: '#388c46'
+                    });
+                    break;
+                
+                case 'parametric':
+                    calculator.setExpression({ 
+                        id: 'param1', 
+                        latex: '(t\\cos(t), t\\sin(t))',
+                        color: '#6042a6',
+                        parametricDomain: { min: '0', max: '10' }
+                    });
+                    break;
+                
+                case 'polar':
+                    calculator.setExpression({ 
+                        id: 'polar1', 
+                        latex: 'r=\\sin(3\\theta)',
+                        color: '#fa7e19',
+                        domain: { min: '0', max: '2\\pi' }
+                    });
+                    break;
+                
+                case 'inequality':
+                    calculator.setExpression({ id: 'ineq1', latex: 'y<x^2', color: '#2d70b3' });
+                    calculator.setExpression({ id: 'ineq2', latex: 'y>x', color: '#c74440' });
+                    break;
+            }
+        }
+
+        // Load basic function template by default
+        loadTemplate('basic');
+    </script>
+</body>
+</html>

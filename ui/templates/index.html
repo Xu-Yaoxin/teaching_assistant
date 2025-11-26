@@ -1,0 +1,3764 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Chat Assistant</title>
+<style>
+/* Base styles */
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', 'Microsoft YaHei', sans-serif;
+}
+.graphing-btn {
+    background: linear-gradient(to right, #e67e22, #d35400);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.graphing-btn:hover {
+    transform: scale(1.05);
+}
+body {
+    background: linear-gradient(135deg, #1a2a6c, #b21f1f, #fdbb2d);
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+}
+
+.container {
+    background-color: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    width: 95vw;
+    height: 90vh;
+    max-width: 1800px;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    transition: all 0.3s ease;
+}
+
+/* Header styles */
+.header {
+    text-align: center;
+    margin-bottom: 15px;
+    flex-shrink: 0;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-content {
+    text-align: center;
+}
+
+.header h1 {
+    color: #2c3e50;
+    font-size: 1.5rem;
+    margin-bottom: 5px;
+}
+
+.header p {
+    color: #7f8c8d;
+    font-size: 0.9rem;
+}
+
+.header-buttons {
+    position: absolute;
+    left: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    gap: 10px;
+}
+
+.history-btn, .new-chat-btn, .upload-btn, .personalization-btn {
+    background: linear-gradient(to right, #3498db, #2c3e50);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 35px;
+    height: 35px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    transition: all 0.3s ease;
+}
+
+.history-btn:hover, .new-chat-btn:hover, .upload-btn:hover, .personalization-btn:hover {
+    transform: scale(1.05);
+}
+
+.upload-btn {
+    background: linear-gradient(to right, #27ae60, #16a085);
+}
+
+/* 个性化按钮移到右上角 */
+.personalization-btn {
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+    background: linear-gradient(to right, #9b59b6, #8e44ad);
+}
+
+.personalization-btn:hover {
+    transform: translateY(-50%) scale(1.05);
+}
+
+/* History sidebar */
+.history-sidebar {
+    position: absolute;
+    left: -300px;
+    top: 0;
+    bottom: 0;
+    width: 300px;
+    background: rgba(30, 30, 30, 0.98);
+    border-right: 1px solid #374151;
+    box-shadow: 5px 0 15px rgba(0,0,0,0.3);
+    padding: 20px 15px;
+    overflow-y: auto;
+    transition: left 0.3s ease;
+    z-index: 10;
+    display: none;
+}
+
+.history-sidebar.show {
+    left: 0;
+    display: block;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #374151;
+}
+
+.history-header h2 {
+    color: #e5e7eb;
+    font-size: 1.2rem;
+}
+
+.close-history {
+    background: #374151;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s;
+    color: #9ca3af;
+}
+
+.close-history:hover {
+    background: #4b5563;
+    color: #e5e7eb;
+}
+
+.history-list {
+    list-style: none;
+}
+
+/* ========== 个性化全屏界面样式 ========== */
+.personalization-fullscreen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    z-index: 10000;
+    display: none;
+    overflow-y: auto;
+    padding: 40px 20px;
+}
+
+.personalization-fullscreen.show {
+    display: block;
+    animation: fadeIn 0.3s ease;
+}
+
+.personalization-container {
+    max-width: 900px;
+    margin: 0 auto;
+    background: white;
+    border-radius: 20px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+}
+
+.personalization-fullscreen-header {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    padding: 30px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.personalization-fullscreen-title {
+    font-size: 2rem;
+    font-weight: 700;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.close-personalization-fullscreen {
+    background: rgba(255, 255, 255, 0.2);
+    border: none;
+    border-radius: 50%;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    color: white;
+    font-size: 1.3rem;
+}
+
+.close-personalization-fullscreen:hover {
+    background: rgba(255, 255, 255, 0.3);
+    transform: rotate(90deg);
+}
+
+.personalization-content {
+    padding: 40px;
+}
+
+.profile-section {
+    margin-bottom: 40px;
+}
+
+.section-title {
+    font-size: 1.5rem;
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #667eea;
+}
+
+/* 将 .form-grid 改为单列布局 */
+.form-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 25px;
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+/* 添加下载PDF按钮样式 */
+.download-pdf-btn {
+    background: linear-gradient(135deg, #27ae60 0%, #229954 100%);
+    color: white;
+    border: none;
+    padding: 12px 30px;
+    border-radius: 10px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    transition: all 0.3s;
+    margin-top: 20px;
+    box-shadow: 0 5px 15px rgba(39, 174, 96, 0.3);
+}
+
+.download-pdf-btn:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(39, 174, 96, 0.4);
+}
+
+.download-pdf-btn:disabled {
+    background: #95a5a6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.report-actions {
+    display: flex;
+    gap: 15px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.form-label {
+    font-size: 1rem;
+    color: #2c3e50;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-input {
+    padding: 12px 15px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    font-size: 1rem;
+    transition: all 0.3s;
+    outline: none;
+}
+
+.form-input:focus {
+    border-color: #667eea;
+    box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+}
+
+.radio-group {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.radio-option {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    cursor: pointer;
+    padding: 10px 18px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    transition: all 0.3s;
+}
+
+.radio-option:hover {
+    border-color: #667eea;
+    background: #f8f9ff;
+}
+
+.radio-option input[type="radio"] {
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.radio-option.selected {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: #667eea;
+}
+
+.select-group {
+    display: flex;
+    gap: 15px;
+    flex-wrap: wrap;
+}
+
+.select-option {
+    padding: 12px 24px;
+    border: 2px solid #e0e0e0;
+    border-radius: 10px;
+    background: white;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-weight: 500;
+    color: #2c3e50;
+}
+
+.select-option:hover {
+    border-color: #667eea;
+    background: #f8f9ff;
+}
+
+.select-option.selected {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border-color: #667eea;
+}
+
+.topics-section {
+    margin-bottom: 40px;
+}
+
+.topics-grid {
+    display: grid;
+    gap: 15px;
+}
+
+.topic-card {
+    background: linear-gradient(135deg, #f8f9ff 0%, #e8ecff 100%);
+    padding: 15px 20px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    border: 2px solid transparent;
+    transition: all 0.3s;
+}
+
+.topic-card:hover {
+    border-color: #667eea;
+    transform: translateX(5px);
+}
+
+.topic-number {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    font-size: 1.1rem;
+    flex-shrink: 0;
+}
+
+.topic-text {
+    flex: 1;
+    font-size: 1rem;
+    color: #2c3e50;
+    font-weight: 500;
+    line-height: 1.5;
+}
+
+.generate-report-btn {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    border: none;
+    padding: 18px 40px;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    transition: all 0.3s;
+    margin-top: 30px;
+    box-shadow: 0 10px 30px rgba(102, 126, 234, 0.3);
+}
+
+.generate-report-btn:hover:not(:disabled) {
+    transform: translateY(-3px);
+    box-shadow: 0 15px 40px rgba(102, 126, 234, 0.4);
+}
+
+.generate-report-btn:disabled {
+    background: #95a5a6;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.report-section {
+    display: none;
+    margin-top: 40px;
+    padding: 30px;
+    background: linear-gradient(135deg, #f8f9ff 0%, #e8ecff 100%);
+    border-radius: 15px;
+    border: 3px solid #667eea;
+}
+
+.report-section.show {
+    display: block;
+    animation: slideIn 0.5s ease;
+}
+
+.report-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.report-title {
+    font-size: 2rem;
+    color: #2c3e50;
+    font-weight: 700;
+    margin-bottom: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 15px;
+}
+
+.report-subtitle {
+    color: #7f8c8d;
+    font-size: 1.1rem;
+}
+
+.report-content {
+    background: white;
+    padding: 30px;
+    border-radius: 12px;
+    line-height: 1.8;
+    font-size: 1.05rem;
+    color: #2c3e50;
+    white-space: pre-wrap;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+}
+
+.loading-spinner {
+    text-align: center;
+    padding: 40px;
+    color: #667eea;
+}
+
+.loading-spinner i {
+    font-size: 3rem;
+    animation: spin 1s linear infinite;
+}
+
+.loading-text {
+    margin-top: 20px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes slideIn {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* History item styles */
+.history-item {
+    padding: 12px 15px;
+    margin: 5px 0;
+    border-radius: 8px;
+    background: #2a2a2a;
+    cursor: pointer;
+    transition: all 0.2s;
+    position: relative;
+}
+
+.history-item:hover {
+    background: #353535;
+}
+
+.history-item.active {
+    background: #1e3a8a;
+}
+
+.history-item.pinned {
+    background: #3a2a1e;
+    border-left: 3px solid #f59e0b;
+}
+
+.history-item.pinned.active {
+    background: #1e3a8a;
+    border-left: 3px solid #60a5fa;
+}
+
+.history-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 5px;
+}
+
+.history-title {
+    font-weight: 500;
+    color: #e5e7eb;
+    flex: 1;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    margin-right: 10px;
+}
+
+.history-actions {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+}
+
+.action-menu-btn {
+    background: none;
+    border: none;
+    color: #9ca3af;
+    cursor: pointer;
+    padding: 4px 8px;
+    border-radius: 4px;
+    transition: all 0.2s;
+}
+
+.action-menu-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #e5e7eb;
+}
+
+.pin-indicator {
+    color: #f59e0b;
+    font-size: 14px;
+    margin-right: 5px;
+}
+
+.history-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 12px;
+    color: #9ca3af;
+}
+
+.history-date {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.message-count {
+    background: #374151;
+    padding: 2px 6px;
+    border-radius: 10px;
+    font-size: 11px;
+}
+
+/* Action menu */
+.action-menu {
+    position: absolute;
+    right: 10px;
+    top: 40px;
+    background: #1f2937;
+    border: 1px solid #374151;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+    z-index: 1000;
+    min-width: 150px;
+    display: none;
+}
+
+.action-menu.show {
+    display: block;
+    animation: fadeIn 0.2s ease-out;
+}
+
+.action-menu-item {
+    padding: 10px 15px;
+    cursor: pointer;
+    transition: all 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #e5e7eb;
+    font-size: 14px;
+    background: transparent;
+    border: none;
+    width: 100%;
+    text-align: left;
+}
+
+.action-menu-item:hover {
+    background: #374151;
+}
+
+.action-menu-item:first-child {
+    border-radius: 7px 7px 0 0;
+}
+
+.action-menu-item:last-child {
+    border-radius: 0 0 7px 7px;
+}
+
+.action-menu-item.danger {
+    color: #ef4444;
+}
+
+.action-menu-item.danger:hover {
+    background: rgba(127, 29, 29, 0.5);
+    color: #fca5a5;
+}
+
+.action-menu-item i {
+    width: 16px;
+    text-align: center;
+    font-size: 13px;
+}
+
+/* Sidebar new chat button */
+.sidebar-new-chat {
+    width: 100%;
+    padding: 12px;
+    background: linear-gradient(to right, #3498db, #2c3e50);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    margin-bottom: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 600;
+    transition: all 0.3s;
+}
+
+.sidebar-new-chat:hover {
+    background: linear-gradient(to right, #2980b9, #1a2530);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Delete confirmation modal styles */
+.delete-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.delete-modal-content {
+    background-color: white;
+    border-radius: 12px;
+    padding: 25px;
+    width: 90%;
+    max-width: 400px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    text-align: center;
+}
+
+.delete-modal-title {
+    font-size: 1.2rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.delete-modal-text {
+    color: #7f8c8d;
+    margin-bottom: 25px;
+    line-height: 1.5;
+}
+
+.delete-modal-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+}
+
+.delete-modal-btn {
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: all 0.2s;
+    border: none;
+}
+
+.delete-modal-cancel {
+    background-color: #f1f2f6;
+    color: #2c3e50;
+}
+
+.delete-modal-cancel:hover {
+    background-color: #dfe4ea;
+}
+
+.delete-modal-confirm {
+    background-color: #e74c3c;
+    color: white;
+}
+
+.delete-modal-confirm:hover {
+    background-color: #c0392b;
+}
+/* Files in messages */
+.message-files {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 10px;
+    padding: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+}
+
+.message-file-card {
+    background: rgba(255, 255, 255, 0.2);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 6px;
+    padding: 6px 10px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.85rem;
+}
+
+.message-file-card i {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+.message-file-card span {
+    color: rgba(255, 255, 255, 0.9);
+}
+/* File upload modal styles */
+.upload-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.upload-modal-content {
+    background-color: white;
+    border-radius: 12px;
+    padding: 25px;
+    width: 90%;
+    max-width: 500px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+    max-height: 80vh;
+    display: flex;
+    flex-direction: column;
+}
+
+.upload-modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #eee;
+}
+
+.upload-modal-title {
+    font-size: 1.3rem;
+    color: #2c3e50;
+    font-weight: 600;
+}
+
+.close-upload {
+    background: #f5f5f5;
+    border: none;
+    border-radius: 50%;
+    width: 30px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+.close-upload:hover {
+    background: #e0e0e0;
+}
+
+.upload-area {
+    border: 2px dashed #3498db;
+    border-radius: 10px;
+    padding: 30px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.3s;
+    background: #f8f9fa;
+    margin-bottom: 20px;
+}
+
+.upload-area:hover {
+    background: #e9ecef;
+    border-color: #2980b9;
+}
+
+.upload-area.dragover {
+    background: #d4e6f1;
+    border-color: #2980b9;
+}
+
+.upload-icon {
+    font-size: 3rem;
+    color: #3498db;
+    margin-bottom: 10px;
+}
+
+.upload-text {
+    color: #7f8c8d;
+    margin-bottom: 10px;
+}
+
+.upload-hint {
+    font-size: 0.85rem;
+    color: #95a5a6;
+}
+
+.file-input {
+    display: none;
+}
+
+.uploaded-files {
+    margin-top: 20px;
+    max-height: 300px;
+    overflow-y: auto;
+}
+
+.uploaded-files-title {
+    font-size: 1.1rem;
+    color: #2c3e50;
+    margin-bottom: 15px;
+    font-weight: 600;
+}
+
+.file-list {
+    list-style: none;
+}
+
+.file-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    margin-bottom: 10px;
+    transition: all 0.2s;
+}
+
+.file-item:hover {
+    background: #e9ecef;
+}
+
+.file-info {
+    flex: 1;
+    min-width: 0;
+}
+
+.file-name {
+    font-weight: 600;
+    color: #2c3e50;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    margin-bottom: 4px;
+}
+
+.file-meta {
+    font-size: 0.8rem;
+    color: #7f8c8d;
+}
+
+.delete-file-btn {
+    background: #e74c3c;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    padding: 6px 12px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-size: 0.85rem;
+    margin-left: 10px;
+}
+
+.delete-file-btn:hover {
+    background: #c0392b;
+    transform: translateY(-1px);
+}
+
+/* Chat container */
+.chat-container {
+    flex: 1;
+    overflow-y: auto;
+    border: 1px solid #ddd;
+    border-radius: 10px;
+    padding: 15px;
+    margin-bottom: 15px;
+    background-color: #f8f9fa;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    transition: all 0.3s ease;
+}
+
+.container.sidebar-open .chat-container {
+    margin-left: 300px;
+    width: calc(100% - 300px);
+}
+
+/* Message styles */
+.message {
+    padding: 16px;
+    border-radius: 18px;
+    max-width: 85%;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+    position: relative;
+    animation: fadeIn 0.3s ease;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.user-message {
+    background: linear-gradient(135deg, #3498db 0%, #2980b9 100%);
+    color: white;
+    margin-left: auto;
+    border-bottom-right-radius: 4px;
+}
+
+.ai-message {
+    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    color: white;
+    margin-right: auto;
+    border-bottom-left-radius: 4px;
+}
+
+.user-message .message-header {
+    display: none;
+}
+
+.ai-message .message-header {
+    display: flex;
+    align-items: center;
+    margin-bottom: 8px;
+    font-weight: 600;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.95);
+    justify-content: flex-start;
+}
+
+.message-header i {
+    margin-right: 6px;
+    font-size: 0.9rem;
+}
+
+.message-content {
+    width: 100%;
+}
+
+.think-content {
+    background: rgba(255, 255, 255, 0.15);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 12px;
+    padding: 12px;
+    margin-bottom: 12px;
+    font-size: 0.9em;
+    font-style: italic;
+    color: rgba(255, 255, 255, 0.9);
+    max-height: 200px;
+    overflow-y: auto;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.think-content::before {
+    content: "💭 Thinking Process";
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-style: normal;
+    color: rgba(255, 255, 255, 1);
+    font-size: 0.95em;
+}
+
+.think-content::-webkit-scrollbar {
+    width: 6px;
+}
+
+.think-content::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 3px;
+}
+
+.think-content::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.3);
+    border-radius: 3px;
+}
+
+.think-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.5);
+}
+
+.answer-content {
+    line-height: 1.6;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    white-space: pre-wrap;
+}
+
+.answer-content pre {
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+    max-width: 100%;
+    background: rgba(0, 0, 0, 0.1);
+    padding: 8px;
+    border-radius: 4px;
+    margin: 8px 0;
+}
+
+.answer-content code {
+    word-wrap: break-word;
+    overflow-wrap: break-word;
+}
+
+.message-timestamp {
+    font-size: 0.7rem;
+    color: rgba(255, 255, 255, 0.6);
+    margin-top: 8px;
+    font-style: italic;
+    text-align: right;
+}
+
+.katex {
+    font-size: 1.1em;
+}
+
+.katex-display {
+    margin: 1em 0;
+    overflow-x: auto;
+    overflow-y: hidden;
+}
+
+/* Uploaded files display area - new style */
+.uploaded-files-display {
+    margin-bottom: 10px;
+    display: none;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 10px;
+    background: #f8f9fa;
+    border-radius: 8px;
+    border: 1px solid #e0e0e0;
+}
+
+.uploaded-files-display.show {
+    display: flex;
+}
+
+/* File card styles */
+.file-card {
+    position: relative;
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 8px 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.2s;
+    cursor: default;
+    max-width: 200px;
+}
+
+.file-card:hover {
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    border-color: #3498db;
+}
+
+.file-card-icon {
+    color: #3498db;
+    font-size: 1.2rem;
+}
+
+.file-card-name {
+    flex: 1;
+    font-size: 0.85rem;
+    color: #2c3e50;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Delete button - hidden by default */
+.file-card-delete {
+    position: absolute;
+    top: -6px;
+    right: -6px;
+    background: #e74c3c;
+    color: white;
+    border: 2px solid white;
+    border-radius: 50%;
+    width: 20px;
+    height: 20px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-size: 0.7rem;
+    transition: all 0.2s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+}
+
+.file-card:hover .file-card-delete {
+    display: flex;
+}
+
+.file-card-delete:hover {
+    background: #c0392b;
+    transform: scale(1.1);
+}
+
+/* Input area */
+.input-container {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+    position: relative;
+}
+
+.container.sidebar-open .input-container {
+    margin-left: 300px;
+    width: calc(100% - 300px);
+}
+
+.input-row {
+    display: flex;
+    gap: 10px;
+}
+
+.input-container input {
+    flex: 1;
+    padding: 10px 14px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 0.9rem;
+    height: 45px;
+}
+
+.input-container input:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(52, 152, 219, 0.2);
+}
+
+.input-container.disabled {
+    opacity: 0.6;
+}
+
+.input-container.disabled input {
+    pointer-events: none;
+    background-color: #f5f5f5;
+}
+
+.button-container {
+    display: flex;
+    gap: 10px;
+}
+
+.upload-input-btn {
+    background: linear-gradient(to right, #27ae60, #16a085);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.2rem;
+    transition: all 0.2s;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.upload-input-btn:hover {
+    background: linear-gradient(to right, #229954, #138d75);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.upload-input-btn:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.send-btn {
+    background: linear-gradient(to right, #3498db, #2c3e50);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.2rem;
+    transition: all 0.2s;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+}
+
+.send-btn:hover:not(:disabled) {
+    background: linear-gradient(to right, #2980b9, #1a2530);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.send-btn:disabled {
+    background: #bdc3c7;
+    cursor: not-allowed;
+    transform: none;
+    box-shadow: none;
+}
+
+.stop-btn {
+    background: linear-gradient(to right, #e74c3c, #c0392b);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 1.2rem;
+    transition: all 0.2s;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+    display: none;
+}
+
+.stop-btn:hover {
+    background: linear-gradient(to right, #c0392b, #a93226);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Upload progress indicator */
+.upload-progress {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: rgba(0, 0, 0, 0.85);
+    color: white;
+    padding: 25px 40px;
+    border-radius: 12px;
+    z-index: 2000;
+    display: none;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+}
+
+.upload-progress.show {
+    display: block;
+}
+
+.upload-progress-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.upload-progress-text {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-bottom: 8px;
+}
+
+.upload-progress-hint {
+    font-size: 0.9rem;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* Toast animations */
+@keyframes slideIn {
+    from {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+    to {
+        transform: translateX(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateX(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateX(400px);
+        opacity: 0;
+    }
+}
+
+/* Custom alert */
+.custom-alert {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background: white;
+    padding: 30px 40px;
+    border-radius: 12px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+    z-index: 2001;
+    display: none;
+    min-width: 300px;
+    max-width: 500px;
+    text-align: center;
+}
+
+.custom-alert.show {
+    display: block;
+    animation: alertFadeIn 0.3s ease;
+}
+
+@keyframes alertFadeIn {
+    from {
+        opacity: 0;
+        transform: translate(-50%, -60%);
+    }
+    to {
+        opacity: 1;
+        transform: translate(-50%, -50%);
+    }
+}
+
+.custom-alert-icon {
+    font-size: 3rem;
+    margin-bottom: 15px;
+}
+
+.custom-alert-icon.success {
+    color: #27ae60;
+}
+
+.custom-alert-icon.error {
+    color: #e74c3c;
+}
+
+.custom-alert-icon.warning {
+    color: #f39c12;
+}
+
+.custom-alert-title {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 10px;
+}
+
+.custom-alert-message {
+    font-size: 1rem;
+    color: #7f8c8d;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.custom-alert-btn {
+    background: linear-gradient(to right, #3498db, #2c3e50);
+    color: white;
+    border: none;
+    padding: 10px 30px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: 600;
+    transition: all 0.2s;
+}
+
+.custom-alert-btn:hover {
+    background: linear-gradient(to right, #2980b9, #1a2530);
+    transform: translateY(-1px);
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.1);
+}
+
+.custom-alert-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.3);
+    z-index: 2000;
+    display: none;
+}
+
+.custom-alert-overlay.show {
+    display: block;
+}
+
+/* Typing indicator */
+.typing-indicator {
+    display: none;
+    padding: 10px;
+    text-align: center;
+    color: #7f8c8d;
+    font-style: italic;
+    font-size: 0.9rem;
+    background-color: #f1f8e9;
+    border-radius: 8px;
+    margin-top: 10px;
+    transition: all 0.3s ease;
+}
+
+.container.sidebar-open .typing-indicator {
+    margin-left: 300px;
+    width: calc(100% - 300px);
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    margin-top: 15px;
+    color: #7f8c8d;
+    font-size: 0.8rem;
+    flex-shrink: 0;
+    transition: all 0.3s ease;
+}
+
+.container.sidebar-open .footer {
+    margin-left: 300px;
+    width: calc(100% - 300px);
+}
+
+/* Scrollbar styles */
+.chat-container::-webkit-scrollbar,
+.history-sidebar::-webkit-scrollbar,
+.uploaded-files::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-container::-webkit-scrollbar-track,
+.history-sidebar::-webkit-scrollbar-track,
+.uploaded-files::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 6px;
+}
+
+.chat-container::-webkit-scrollbar-thumb,
+.history-sidebar::-webkit-scrollbar-thumb,
+.uploaded-files::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 6px;
+}
+
+.chat-container::-webkit-scrollbar-thumb:hover,
+.history-sidebar::-webkit-scrollbar-thumb:hover,
+.uploaded-files::-webkit-scrollbar-thumb:hover {
+    background: #a1a1a1;
+}
+
+/* Title editing mode styles */
+.history-title.editing {
+    display: none;
+}
+
+.title-edit-container {
+    display: none;
+    flex: 1;
+    gap: 5px;
+}
+
+.title-edit-container.active {
+    display: flex;
+}
+
+.title-edit-input {
+    flex: 1;
+    padding: 4px 8px;
+    border: 1px solid #3498db;
+    border-radius: 4px;
+    font-size: 14px;
+    background: #1f2937;
+    color: #e5e7eb;
+    outline: none;
+}
+
+.title-edit-input:focus {
+    border-color: #60a5fa;
+    box-shadow: 0 0 0 2px rgba(96, 165, 250, 0.2);
+}
+
+.title-edit-btns {
+    display: flex;
+    gap: 4px;
+}
+
+.title-edit-btn {
+    padding: 4px 8px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    transition: all 0.2s;
+}
+
+.title-save-btn {
+    background: #10b981;
+    color: white;
+}
+
+.title-save-btn:hover {
+    background: #059669;
+}
+
+.title-cancel-btn {
+    background: #6b7280;
+    color: white;
+}
+
+.title-cancel-btn:hover {
+    background: #4b5563;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .container {
+        height: 95vh;
+        width: 98vw;
+        padding: 12px;
+    }
+
+    .header h1 {
+        font-size: 1.3rem;
+    }
+
+    .chat-container {
+        padding: 10px;
+    }
+
+    .message {
+        font-size: 0.85rem;
+        padding: 10px;
+    }
+
+    .input-container input,
+    .send-btn, .stop-btn, .upload-input-btn {
+        height: 40px;
+        font-size: 0.85rem;
+    }
+
+    .send-btn, .stop-btn, .upload-input-btn {
+        width: 40px;
+        height: 40px;
+    }
+
+    .history-sidebar {
+        width: 250px;
+    }
+
+    .container.sidebar-open .chat-container,
+    .container.sidebar-open .typing-indicator,
+    .container.sidebar-open .input-container,
+    .container.sidebar-open .footer {
+        margin-left: 250px;
+        width: calc(100% - 250px);
+    }
+    
+    .personalization-container {
+        margin: 20px;
+    }
+    
+    .personalization-content {
+        padding: 20px;
+    }
+    
+    .form-grid {
+        grid-template-columns: 1fr;
+    }
+}
+</style>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"></script>
+<!-- 在 </head> 前添加 -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+</head>
+<body>
+<!-- Delete confirmation modal -->
+<div class="delete-modal" id="deleteModal">
+    <div class="delete-modal-content">
+        <div class="delete-modal-text">Are you sure you want to delete this conversation? This action cannot be undone.</div>
+        <div class="delete-modal-buttons">
+            <button class="delete-modal-btn delete-modal-cancel" id="deleteCancelBtn">Cancel</button>
+            <button class="delete-modal-btn delete-modal-confirm" id="deleteConfirmBtn">Delete</button>
+        </div>
+    </div>
+</div>
+
+<!-- File upload modal -->
+<div class="upload-modal" id="uploadModal">
+    <div class="upload-modal-content">
+        <div class="upload-modal-header">
+            <div class="upload-modal-title">
+                <i class="fas fa-cloud-upload-alt"></i> File Management
+            </div>
+            <button class="close-upload" id="closeUpload">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="upload-area" id="uploadArea">
+            <div class="upload-icon">
+                <i class="fas fa-file-upload"></i>
+            </div>
+            <div class="upload-text">Click or drag files here to upload</div>
+            <div class="upload-hint">Supports PDF, Word, PPT, TXT, video formats (max 100MB)</div>
+            <input type="file" id="fileInput" class="file-input" accept=".pdf,.docx,.doc,.pptx,.ppt,.txt,.mp4,.avi,.mov">
+        </div>
+        
+    </div>
+</div>
+
+<!-- Upload progress indicator -->
+<div class="upload-progress" id="uploadProgress">
+    <div class="upload-progress-icon">
+        <i class="fas fa-cloud-upload-alt"></i>
+    </div>
+    <div class="upload-progress-text">Uploading file...</div>
+    <div class="upload-progress-hint">Please wait, large files may take some time</div>
+</div>
+
+<!-- Custom alert -->
+<div class="custom-alert-overlay" id="customAlertOverlay"></div>
+<div class="custom-alert" id="customAlert">
+    <div class="custom-alert-icon" id="customAlertIcon">
+        <i class="fas fa-check-circle"></i>
+    </div>
+    <div class="custom-alert-title" id="customAlertTitle">Notice</div>
+    <div class="custom-alert-message" id="customAlertMessage">Operation successful</div>
+    <button class="custom-alert-btn" id="customAlertBtn">OK</button>
+</div>
+
+<!-- ========== 个性化全屏界面 ========== -->
+<div class="personalization-fullscreen" id="personalizationFullscreen">
+    <div class="personalization-container">
+        <div class="personalization-fullscreen-header">
+            <div class="personalization-fullscreen-title">
+                <i class="fas fa-user-cog"></i>
+                Personalization Center
+            </div>
+            <button class="close-personalization-fullscreen" id="closePersonalizationFullscreen">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="personalization-content">
+            <!-- 用户信息区域 -->
+            <div class="profile-section">
+                <div class="section-title">
+                    <i class="fas fa-id-card"></i>
+                    Personal Information
+                </div>
+                
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="fas fa-venus-mars"></i>
+                            Gender
+                        </label>
+                        <div class="radio-group">
+                            <label class="radio-option">
+                                <input type="radio" name="gender" value="male">
+                                <span>Male</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="gender" value="female">
+                                <span>Female</span>
+                            </label>
+                            <label class="radio-option">
+                                <input type="radio" name="gender" value="other">
+                                <span>Other</span>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label" for="userAge">
+                            <i class="fas fa-birthday-cake"></i>
+                            Age
+                        </label>
+                        <input type="number" id="userAge" class="form-input" placeholder="Enter your age" min="5" max="100">
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="fas fa-graduation-cap"></i>
+                            Education Level
+                        </label>
+                        <div class="select-group">
+                            <div class="select-option" data-level="elementary">Elementary</div>
+                            <div class="select-option" data-level="middle">Middle School</div>
+                            <div class="select-option" data-level="high">High School</div>
+                            <div class="select-option" data-level="college">College</div>
+                            <div class="select-option" data-level="graduate">Graduate</div>
+                        </div>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label class="form-label">
+                            <i class="fas fa-theater-masks"></i>
+                            Personality
+                        </label>
+                        <div class="select-group">
+                            <div class="select-option" data-personality="analytical">Analytical</div>
+                            <div class="select-option" data-personality="creative">Creative</div>
+                            <div class="select-option" data-personality="practical">Practical</div>
+                            <div class="select-option" data-personality="social">Social</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 最常问话题 -->
+            <div class="topics-section">
+                <div class="section-title">
+                    <i class="fas fa-chart-line"></i>
+                    Your Most Asked Topics
+                </div>
+                <div class="topics-grid" id="topicsGrid">
+                    <div class="topic-card">
+                        <div class="topic-number">1</div>
+                        <div class="topic-text">Loading topics...</div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 生成报告按钮 -->
+            <button class="generate-report-btn" id="generateReportBtn">
+                <i class="fas fa-magic"></i>
+                Generate Learning Report
+            </button>
+            
+            <!-- 学习报告区域 -->
+            <!-- 学习报告区域 -->
+            <div class="report-section" id="reportSection">
+                <div class="report-header">
+                    <div class="report-title">
+                        <i class="fas fa-file-alt"></i>
+                        Personalized Learning Report
+                    </div>
+                    <div class="report-subtitle">Generated based on your profile and learning patterns</div>
+                </div>
+                <div class="report-content" id="reportContent">
+                    <!-- Report content will be displayed here -->
+                </div>
+                <!-- 新增：报告操作按钮 -->
+                <div class="report-actions" id="reportActions" style="display: none;">
+                    <button class="download-pdf-btn" id="downloadPdfBtn">
+                        <i class="fas fa-file-pdf"></i>
+                        Download Report as PDF
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="container">
+    <div class="header">
+        <div class="header-buttons">
+            <button class="new-chat-btn" id="newChatBtn" title="New Chat">
+                <i class="fas fa-plus"></i>
+            </button>
+            <button class="history-btn" id="historyBtn" title="History">
+                <i class="fas fa-history"></i>
+            </button>
+            <!-- 新增画图按钮 -->
+            <button class="graphing-btn" id="graphingBtn" title="Math Graphing">
+                <i class="fas fa-chart-line"></i>
+            </button>
+        </div>
+        <div class="header-content">
+            <h1>AI Chat Assistant</h1>
+            <p>Chat with your assistant anytime</p>
+        </div>
+        <!-- 个性化按钮 -->
+        <button class="personalization-btn" id="personalizationBtn" title="Personalization">
+            <i class="fas fa-user-cog"></i>
+        </button>
+    </div>
+
+    <!-- History sidebar -->
+    <div class="history-sidebar" id="historySidebar">
+        <div class="history-header">
+            <h2>History</h2>
+            <button class="close-history" id="closeHistory">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        <button class="sidebar-new-chat" id="sidebarNewChat">
+            <i class="fas fa-plus"></i> New Conversation
+        </button>
+        <ul class="history-list" id="historyList">
+            <!-- History items will be dynamically loaded -->
+        </ul>
+    </div>
+
+    <div class="chat-container" id="chatContainer">
+        <div class="message ai-message">
+            <div class="message-header">
+                <i class="fas fa-robot"></i> AI Assistant
+            </div>
+            <div class="message-content">
+                Hello! I'm your AI assistant. What can I help you with today? I can answer questions, provide suggestions, explain concepts, or just chat with you. Feel free to ask me anything!
+            </div>
+        </div>
+    </div>
+
+    <div class="typing-indicator" id="typingIndicator">
+        <i class="fas fa-circle-notch fa-spin"></i> Assistant is thinking...
+    </div>
+
+    <div class="input-container" id="inputContainer">
+        <!-- Uploaded files display area (new design) -->
+        <div class="uploaded-files-display" id="uploadedFilesDisplay">
+            <!-- File cards will be dynamically loaded -->
+        </div>
+        
+        <div class="input-row">
+            <input type="text" id="userInput" placeholder="Type your question or message..." autocomplete="off">
+            <div class="button-container">
+                <button class="upload-input-btn" id="uploadInputBtn" title="Upload File">
+                    <i class="fas fa-paperclip"></i>
+                </button>
+                <button class="send-btn" id="sendBtn" title="Send Message">
+                    <i class="fas fa-paper-plane"></i>
+                </button>
+                <button class="stop-btn" id="stopBtn" title="Stop Response">
+                    <i class="fas fa-stop"></i>
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <div class="footer">
+        <p>Press Enter to send message</p>
+    </div>
+</div>
+
+<script>
+// DOM elements
+const chatContainer = document.getElementById('chatContainer');
+const userInput = document.getElementById('userInput');
+const sendBtn = document.getElementById('sendBtn');
+const stopBtn = document.getElementById('stopBtn');
+const typingIndicator = document.getElementById('typingIndicator');
+const historyBtn = document.getElementById('historyBtn');
+const newChatBtn = document.getElementById('newChatBtn');
+const sidebarNewChat = document.getElementById('sidebarNewChat');
+const historySidebar = document.getElementById('historySidebar');
+const closeHistory = document.getElementById('closeHistory');
+const historyList = document.getElementById('historyList');
+const container = document.querySelector('.container');
+const inputContainer = document.getElementById('inputContainer');
+const deleteModal = document.getElementById('deleteModal');
+const deleteCancelBtn = document.getElementById('deleteCancelBtn');
+const deleteConfirmBtn = document.getElementById('deleteConfirmBtn');
+
+// File upload related elements
+const uploadInputBtn = document.getElementById('uploadInputBtn');
+const uploadModal = document.getElementById('uploadModal');
+const closeUpload = document.getElementById('closeUpload');
+const uploadArea = document.getElementById('uploadArea');
+const fileInput = document.getElementById('fileInput');
+const fileList = document.getElementById('fileList');
+const uploadedFilesDisplay = document.getElementById('uploadedFilesDisplay');
+const uploadProgress = document.getElementById('uploadProgress');
+const customAlert = document.getElementById('customAlert');
+const customAlertOverlay = document.getElementById('customAlertOverlay');
+const customAlertIcon = document.getElementById('customAlertIcon');
+const customAlertTitle = document.getElementById('customAlertTitle');
+const customAlertMessage = document.getElementById('customAlertMessage');
+const customAlertBtn = document.getElementById('customAlertBtn');
+
+// Personalization elements
+const personalizationBtn = document.getElementById('personalizationBtn');
+const personalizationFullscreen = document.getElementById('personalizationFullscreen');
+const closePersonalizationFullscreen = document.getElementById('closePersonalizationFullscreen');
+const userAgeInput = document.getElementById('userAge');
+const topicsGrid = document.getElementById('topicsGrid');
+const generateReportBtn = document.getElementById('generateReportBtn');
+const reportSection = document.getElementById('reportSection');
+const reportContent = document.getElementById('reportContent');
+
+// 在现有的 DOM elements 部分添加：
+const reportActions = document.getElementById('reportActions');
+const downloadPdfBtn = document.getElementById('downloadPdfBtn');
+// Current conversation ID
+let currentConversationId = null;
+let currentDeleteConversationId = null;
+let currentDeleteHistoryItem = null;
+let isAIResponding = false;
+let abortController = null;
+
+// Background active conversations (for continuing to receive responses in the background)
+let backgroundConversations = new Map();
+
+// Store user profile data
+let userProfile = {
+    gender: '',
+    age: '',
+    education: '',
+    personality: '',
+    topics: []
+};
+
+// Custom alert function
+function showCustomAlert(message, type = 'success', title = '') {
+    customAlertIcon.innerHTML = '';
+    if (type === 'success') {
+        customAlertIcon.className = 'custom-alert-icon success';
+        customAlertIcon.innerHTML = '<i class="fas fa-check-circle"></i>';
+        customAlertTitle.textContent = title || '✨ Success';
+    } else if (type === 'error') {
+        customAlertIcon.className = 'custom-alert-icon error';
+        customAlertIcon.innerHTML = '<i class="fas fa-times-circle"></i>';
+        customAlertTitle.textContent = title || '❌ Error';
+    } else if (type === 'warning') {
+        customAlertIcon.className = 'custom-alert-icon warning';
+        customAlertIcon.innerHTML = '<i class="fas fa-exclamation-circle"></i>';
+        customAlertTitle.textContent = title || '⚠️ Warning';
+    }
+    
+    customAlertMessage.textContent = message;
+    customAlertOverlay.classList.add('show');
+    customAlert.classList.add('show');
+}
+
+// Start editing title
+function startTitleEdit(conversationId) {
+    event.stopPropagation();
+    
+    // Close menu
+    document.getElementById(`menu-${conversationId}`).classList.remove('show');
+    
+    // Get title element and edit container
+    const historyItem = document.querySelector(`.history-item[data-conversation-id="${conversationId}"]`);
+    const titleElement = historyItem.querySelector('.history-title');
+    const editContainer = document.getElementById(`edit-${conversationId}`);
+    const inputElement = editContainer.querySelector('.title-edit-input');
+    
+    // Toggle display state
+    titleElement.classList.add('editing');
+    editContainer.classList.add('active');
+    
+    // Focus input and select text
+    inputElement.focus();
+    inputElement.select();
+    
+    // Add keyboard events
+    inputElement.onkeydown = (e) => {
+        if (e.key === 'Enter') {
+            saveTitleEdit(conversationId);
+        } else if (e.key === 'Escape') {
+            cancelTitleEdit(conversationId);
+        }
+    };
+}
+
+// Save title edit
+async function saveTitleEdit(conversationId) {
+    event?.stopPropagation();
+    
+    const editContainer = document.getElementById(`edit-${conversationId}`);
+    const inputElement = editContainer.querySelector('.title-edit-input');
+    const newTitle = inputElement.value.trim();
+    
+    if (!newTitle) {
+        showToast('Title cannot be empty', 'error');
+        inputElement.focus();
+        return;
+    }
+    
+    try {
+        const response = await fetch(`/update_conversation_title/${conversationId}`, {
+            method: 'PUT',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                title: newTitle
+            })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            await loadHistoryList();
+            showToast('Title updated');
+        } else {
+            showToast(data.message || 'Failed to update title', 'error');
+            inputElement.focus();
+        }
+    } catch (error) {
+        console.error('Failed to update title:', error);
+        showToast('Failed to update title', 'error');
+    }
+}
+
+// Cancel title edit
+function cancelTitleEdit(conversationId) {
+    event?.stopPropagation();
+    
+    const historyItem = document.querySelector(`.history-item[data-conversation-id="${conversationId}"]`);
+    const titleElement = historyItem.querySelector('.history-title');
+    const editContainer = document.getElementById(`edit-${conversationId}`);
+    
+    // Restore display state
+    titleElement.classList.remove('editing');
+    editContainer.classList.remove('active');
+}
+
+// Hide custom alert
+function hideCustomAlert() {
+    customAlertOverlay.classList.remove('show');
+    customAlert.classList.remove('show');
+}
+
+// Show upload progress
+function showUploadProgress() {
+    uploadProgress.classList.add('show');
+}
+
+// Hide upload progress
+function hideUploadProgress() {
+    uploadProgress.classList.remove('show');
+}
+
+// Render LaTeX formulas
+function renderLatex(element) {
+    if (typeof renderMathInElement !== 'undefined') {
+        try {
+            renderMathInElement(element, {
+                delimiters: [
+                    {left: '$$', right: '$$', display: true},
+                    {left: '$', right: '$', display: false},
+                    {left: '\\[', right: '\\]', display: true},
+                    {left: '\\(', right: '\\)', display: false}
+                ],
+                throwOnError: false
+            });
+        } catch (e) {
+            console.error('LaTeX rendering error:', e);
+        }
+    }
+}
+
+// HTML escape function
+function escapeHtml(text) {
+    const div = document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+}
+
+// Add message to chat container
+function addMessage(role, content, thinkContent = '', timestamp = '') {
+    const messageElement = document.createElement('div');
+    messageElement.className = `message ${role}-message`;
+
+    if (role === 'ai') {
+        let messageContent = '';
+        
+        if (thinkContent) {
+            messageContent += `<div class="think-content">${escapeHtml(thinkContent)}</div>`;
+        }
+        
+        if (content) {
+            messageContent += `<div class="answer-content">${escapeHtml(content)}</div>`;
+        }
+        
+        if (timestamp) {
+            messageContent += `<div class="message-timestamp">${escapeHtml(timestamp)}</div>`;
+        }
+        
+        messageElement.innerHTML = `
+            <div class="message-header">
+                <i class="fas fa-robot"></i> AI Assistant
+            </div>
+            <div class="message-content">
+                ${messageContent}
+            </div>
+        `;
+    } else {
+        messageElement.innerHTML = `
+            <div class="message-content">
+                ${escapeHtml(content)}
+                ${timestamp ? `<div class="message-timestamp">${escapeHtml(timestamp)}</div>` : ''}
+            </div>
+        `;
+    }
+
+    chatContainer.appendChild(messageElement);
+    renderLatex(messageElement);
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+    return messageElement;
+}
+
+// Format file size
+function formatFileSize(bytes) {
+    if (bytes < 1024) return bytes + ' B';
+    if (bytes < 1024 * 1024) return (bytes / 1024).toFixed(2) + ' KB';
+    return (bytes / (1024 * 1024)).toFixed(2) + ' MB';
+}
+
+// Load uploaded files list (new version - card style display)
+async function loadUploadedFiles() {
+    const uploadedFilesDisplay = document.getElementById('uploadedFilesDisplay');
+    
+    if (!currentConversationId) {
+        uploadedFilesDisplay.classList.remove('show');
+        uploadedFilesDisplay.innerHTML = '';
+        return;
+    }
+    
+    try {
+        const response = await fetch(`/get_uploaded_files?conversation_id=${currentConversationId}`);
+        const result = await response.json();
+        
+        if (result.success) {
+            uploadedFilesDisplay.innerHTML = '';
+            
+            if (result.files.length === 0) {
+                uploadedFilesDisplay.classList.remove('show');
+                // Also update file list in modal
+                if (fileList) {
+                    fileList.innerHTML = '<li style="text-align: center; color: #7f8c8d; padding: 20px;">No uploaded files</li>';
+                }
+                return;
+            }
+            
+            // Display file cards
+            uploadedFilesDisplay.classList.add('show');
+            result.files.forEach(file => {
+                const fileCard = document.createElement('div');
+                fileCard.className = 'file-card';
+                fileCard.title = `${file.name}\n${formatFileSize(file.size)} · ${file.upload_time}`;
+                fileCard.innerHTML = `
+                    <i class="fas fa-file file-card-icon"></i>
+                    <span class="file-card-name">${escapeHtml(file.name)}</span>
+                    <button class="file-card-delete" data-filename="${escapeHtml(file.name)}">
+                        <i class="fas fa-times"></i>
+                    </button>
+                `;
+                
+                const deleteBtn = fileCard.querySelector('.file-card-delete');
+                deleteBtn.addEventListener('click', (e) => {
+                    e.stopPropagation();
+                    deleteFile(file.name);
+                });
+                
+                uploadedFilesDisplay.appendChild(fileCard);
+            });
+            
+            // Also update file list in modal
+            if (fileList) {
+                fileList.innerHTML = '';
+                result.files.forEach(file => {
+                    const fileItem = document.createElement('li');
+                    fileItem.className = 'file-item';
+                    fileItem.innerHTML = `
+                        <div class="file-info">
+                            <div class="file-name"><i class="fas fa-file"></i> ${escapeHtml(file.name)}</div>
+                            <div class="file-meta">${formatFileSize(file.size)} · ${file.upload_time}</div>
+                        </div>
+                        <button class="delete-file-btn" data-filename="${escapeHtml(file.name)}">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                    `;
+                    
+                    const deleteBtn = fileItem.querySelector('.delete-file-btn');
+                    deleteBtn.addEventListener('click', () => deleteFile(file.name));
+                    
+                    fileList.appendChild(fileItem);
+                });
+            }
+        }
+    } catch (error) {
+        console.error('Failed to load file list:', error);
+    }
+}
+
+// Upload file (new version - no automatic content recognition)
+// Upload file (new version - no automatic content recognition)
+async function uploadFile(file) {
+    if (!currentConversationId) {
+        showCustomAlert('Please start a conversation before uploading files', 'warning');
+        return;
+    }
+    
+    showUploadProgress();
+    
+    try {
+        console.log('📤 Starting file upload to server...');
+        const uploadFormData = new FormData();
+        uploadFormData.append('file', file);
+        uploadFormData.append('conversation_id', currentConversationId);
+        
+        // 【修改】添加超时控制和更详细的错误处理
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 180000); // 3分钟超时
+        
+        const uploadResponse = await fetch('/upload_file', {
+            method: 'POST',
+            body: uploadFormData,
+            signal: controller.signal,
+            // 不设置 Content-Type，让浏览器自动设置 multipart/form-data
+        });
+        
+        clearTimeout(timeoutId);
+        
+        // 【新增】检查响应状态
+        if (!uploadResponse.ok) {
+            throw new Error(`HTTP ${uploadResponse.status}: ${uploadResponse.statusText}`);
+        }
+        
+        const uploadResult = await uploadResponse.json();
+        console.log('📁 File upload result:', uploadResult);
+        
+        hideUploadProgress();
+        
+        if (uploadResult.success) {
+            await loadUploadedFiles();
+            
+            let message = `File "${file.name}" uploaded successfully!\nYou can continue to ask questions, and the system will answer based on the file content.`;
+            
+            // 【新增】如果有警告信息，显示出来
+            if (uploadResult.warning) {
+                message += `\n\nWarning: ${uploadResult.warning}`;
+            }
+            
+            showCustomAlert(message, 'success', '✅ Upload Successful');
+        } else {
+            showCustomAlert(uploadResult.message || 'File upload failed', 'error', '❌ Upload Failed');
+        }
+        
+    } catch (error) {
+        hideUploadProgress();
+        console.error('❌ File upload failed:', error);
+        
+        let errorMessage = 'Unknown error occurred';
+        
+        if (error.name === 'AbortError') {
+            errorMessage = 'Upload timeout. Please try a smaller file or check your network connection.';
+        } else if (error.message.includes('Failed to fetch')) {
+            errorMessage = 'Network error. Please check:\n1. Flask server is running (port 5000)\n2. FastAPI server is running (port 8000)\n3. Your network connection is stable';
+        } else {
+            errorMessage = error.message;
+        }
+        
+        showCustomAlert(
+            `Error occurred while uploading file:\n${errorMessage}`, 
+            'error', 
+            '❌ Upload Failed'
+        );
+    }
+}
+
+// Delete file
+async function deleteFile(filename) {
+    return new Promise((resolve) => {
+        const confirmModal = document.createElement('div');
+        confirmModal.className = 'delete-modal';
+        confirmModal.style.display = 'flex';
+        confirmModal.innerHTML = `
+            <div class="delete-modal-content">
+                <div class="delete-modal-title">🗑️ Delete File</div>
+                <div class="delete-modal-text">
+                    Are you sure you want to delete file <strong>"${filename}"</strong>?<br>
+                    This action cannot be undone.
+                </div>
+                <div class="delete-modal-buttons">
+                    <button class="delete-modal-btn delete-modal-cancel">Cancel</button>
+                    <button class="delete-modal-btn delete-modal-confirm">Delete</button>
+                </div>
+            </div>
+        `;
+        
+        document.body.appendChild(confirmModal);
+        
+        const cancelBtn = confirmModal.querySelector('.delete-modal-cancel');
+        const confirmBtn = confirmModal.querySelector('.delete-modal-confirm');
+        
+        const cleanup = () => {
+            confirmModal.remove();
+        };
+        
+        cancelBtn.onclick = () => {
+            cleanup();
+            resolve(false);
+        };
+        
+        confirmBtn.onclick = async () => {
+            cleanup();
+            
+            if (!currentConversationId) {
+                showCustomAlert('Cannot delete file: missing conversation ID', 'error');
+                return;
+            }
+            
+            try {
+                const response = await fetch(`/delete_file/${encodeURIComponent(filename)}?conversation_id=${currentConversationId}`, {
+                    method: 'DELETE'
+                });
+                
+                const result = await response.json();
+                
+                if (result.success) {
+                    showCustomAlert(`File "${filename}" successfully deleted`, 'success', '🗑️ Deleted');
+                    await loadUploadedFiles();
+                } else {
+                    showCustomAlert(result.message, 'error', 'Delete Failed');
+                }
+            } catch (error) {
+                console.error('Failed to delete file:', error);
+                showCustomAlert('An error occurred while deleting the file, please try again', 'error', 'Operation Failed');
+            }
+        };
+    });
+}
+
+// Show delete confirmation modal
+function showDeleteModal(conversationId, historyItem) {
+    currentDeleteConversationId = conversationId;
+    currentDeleteHistoryItem = historyItem;
+    deleteModal.style.display = 'flex';
+}
+
+// Hide delete confirmation modal
+function hideDeleteModal() {
+    deleteModal.style.display = 'none';
+    currentDeleteConversationId = null;
+    currentDeleteHistoryItem = null;
+}
+
+// Enable input area
+function enableInput() {
+    inputContainer.classList.remove('disabled');
+    sendBtn.disabled = false;
+    userInput.disabled = false;
+    uploadInputBtn.disabled = false;
+    sendBtn.style.display = 'flex';
+    stopBtn.style.display = 'none';
+    isAIResponding = false;
+    abortController = null;
+}
+
+// Disable input area
+function disableInput() {
+    inputContainer.classList.add('disabled');
+    sendBtn.disabled = true;
+    userInput.disabled = true;
+    uploadInputBtn.disabled = true;
+    sendBtn.style.display = 'none';
+    stopBtn.style.display = 'flex';
+    isAIResponding = true;
+}
+
+// Stop AI response
+function stopAIResponse() {
+    if (abortController) {
+        abortController.abort();
+    }
+    enableInput();
+
+    const aiMessages = document.querySelectorAll('.ai-message');
+    if (aiMessages.length > 0) {
+        const lastAIMessage = aiMessages[aiMessages.length - 1];
+        const answerContent = lastAIMessage.querySelector('.answer-content');
+        if (answerContent) {
+            answerContent.innerHTML += ' <em>(Response stopped)</em>';
+        }
+    }
+}
+
+// Toggle action menu display
+function toggleActionMenu(event, conversationId) {
+    event.stopPropagation();
+    
+    document.querySelectorAll('.action-menu').forEach(menu => {
+        if (menu.id !== `menu-${conversationId}`) {
+            menu.classList.remove('show');
+        }
+    });
+    
+    const menu = document.getElementById(`menu-${conversationId}`);
+    menu.classList.toggle('show');
+}
+
+// Click elsewhere to close menu
+document.addEventListener('click', (e) => {
+    if (!e.target.closest('.action-menu') && !e.target.closest('.action-menu-btn')) {
+        document.querySelectorAll('.action-menu').forEach(menu => {
+            menu.classList.remove('show');
+        });
+    }
+});
+
+// Pin/unpin conversation
+async function togglePinConversation(conversationId, currentPinned) {
+    event.stopPropagation();
+    
+    try {
+        const response = await fetch(`/toggle_pin/${conversationId}`, {
+            method: 'PUT'
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            document.getElementById(`menu-${conversationId}`).classList.remove('show');
+            await loadHistoryList();
+            const message = data.is_pinned ? 'Pinned' : 'Unpinned';
+            showToast(message);
+        } else {
+            showToast(data.message || 'Operation failed', 'error');
+        }
+    } catch (error) {
+        console.error('Failed to toggle pin status:', error);
+        showToast('Operation failed', 'error');
+    }
+}
+
+// Load history list
+async function loadHistoryList() {
+    try {
+        const response = await fetch('/get_conversations');
+        const data = await response.json();
+        
+        if (data.success) {
+            historyList.innerHTML = '';
+            
+            if (data.conversations && data.conversations.length > 0) {
+                data.conversations.forEach(conv => {
+                    const historyItem = document.createElement('div');
+                    historyItem.className = 'history-item';
+                    if (conv.is_pinned) {
+                        historyItem.classList.add('pinned');
+                    }
+                    if (conv.id === currentConversationId) {
+                        historyItem.classList.add('active');
+                    }
+                    historyItem.dataset.conversationId = conv.id;
+                    
+                    historyItem.innerHTML = `
+                        <div class="history-header">
+                            ${conv.is_pinned ? '<i class="fas fa-thumbtack pin-indicator"></i>' : ''}
+                            <div class="history-title" data-conversation-id="${conv.id}">${escapeHtml(conv.title)}</div>
+                            <div class="title-edit-container" id="edit-${conv.id}">
+                                <input type="text" class="title-edit-input" value="${escapeHtml(conv.title)}" />
+                                <div class="title-edit-btns">
+                                    <button class="title-edit-btn title-save-btn" onclick="saveTitleEdit('${conv.id}')">
+                                        <i class="fas fa-check"></i>
+                                    </button>
+                                    <button class="title-edit-btn title-cancel-btn" onclick="cancelTitleEdit('${conv.id}')">
+                                        <i class="fas fa-times"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="history-actions">
+                                <button class="action-menu-btn" onclick="toggleActionMenu(event, '${conv.id}')">
+                                    <i class="fas fa-ellipsis-v"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="history-meta">
+                            <span class="history-date">
+                                <i class="far fa-clock"></i>
+                                ${conv.date}
+                            </span>
+                            <span class="message-count">${conv.message_count} messages</span>
+                        </div>
+                        <div class="action-menu" id="menu-${conv.id}">
+                            <div class="action-menu-item" onclick="togglePinConversation('${conv.id}', ${conv.is_pinned})">
+                                <i class="fas fa-thumbtack"></i>
+                                <span>${conv.is_pinned ? 'Unpin' : 'Pin'}</span>
+                            </div>
+                            <div class="action-menu-item" onclick="startTitleEdit('${conv.id}')">
+                                <i class="fas fa-edit"></i>
+                                <span>Edit Title</span>
+                            </div>
+                            <div class="action-menu-item danger" onclick="deleteConversation('${conv.id}')">
+                                <i class="fas fa-trash"></i>
+                                <span>Delete</span>
+                            </div>
+                        </div>
+                    `;
+                    
+                    // Click conversation item to load conversation
+                    historyItem.addEventListener('click', (e) => {
+                        if (!e.target.closest('.action-menu-btn') && 
+                            !e.target.closest('.action-menu') &&
+                            !e.target.closest('.title-edit-container')) {
+                            loadConversation(conv.id);
+                        }
+                    });
+                    
+                    historyList.appendChild(historyItem);
+                });
+            } else {
+                historyList.innerHTML = '<div style="text-align: center; color: #9ca3af; padding: 20px;">No conversation history</div>';
+            }
+        }
+    } catch (error) {
+        console.error('Failed to load history:', error);
+    }
+}
+
+// Delete conversation - using custom styled modal
+async function deleteConversation(conversationId) {
+    event.stopPropagation();
+    
+    document.getElementById(`menu-${conversationId}`).classList.remove('show');
+    
+    return new Promise((resolve) => {
+        const confirmModal = document.createElement('div');
+        confirmModal.className = 'custom-alert-overlay';
+        confirmModal.style.display = 'block';
+        
+        const modalContent = document.createElement('div');
+        modalContent.className = 'custom-alert';
+        modalContent.style.display = 'block';
+        modalContent.innerHTML = `
+            <div class="custom-alert-icon warning">
+                <i class="fas fa-exclamation-triangle"></i>
+            </div>
+            <div class="custom-alert-message">
+                Are you sure you want to delete this conversation?<br>
+                <strong>Conversation history and related files will be permanently deleted. This action cannot be undone.</strong>
+            </div>
+            <div style="display: flex; gap: 10px; justify-content: center; margin-top: 20px;">
+                <button class="custom-alert-btn" id="deleteConfirmModalCancel" style="background: #95a5a6;">Cancel</button>
+                <button class="custom-alert-btn" id="deleteConfirmModalConfirm" style="background: linear-gradient(to right, #e74c3c, #c0392b);">Delete</button>
+            </div>
+        `;
+        
+        document.body.appendChild(confirmModal);
+        document.body.appendChild(modalContent);
+        
+        const cancelBtn = document.getElementById('deleteConfirmModalCancel');
+        const confirmBtn = document.getElementById('deleteConfirmModalConfirm');
+        
+        const cleanup = () => {
+            confirmModal.remove();
+            modalContent.remove();
+        };
+        
+        cancelBtn.onclick = () => {
+            cleanup();
+            resolve(false);
+        };
+        
+        confirmBtn.onclick = async () => {
+            cleanup();
+            
+            try {
+                const response = await fetch(`/delete_conversation/${conversationId}`, {
+                    method: 'DELETE'
+                });
+                
+                const data = await response.json();
+                
+                if (data.success) {
+                    // If deleting current conversation, show welcome message
+                    if (conversationId === currentConversationId) {
+                        currentConversationId = null;
+                        chatContainer.innerHTML = `
+                            <div class="message ai-message">
+                                <div class="message-header">
+                                    <i class="fas fa-robot"></i> AI Assistant
+                                </div>
+                                <div class="message-content">
+                                    Hello! I'm your AI assistant. What can I help you with today? I can answer questions, provide suggestions, explain concepts, or just chat with you. Feel free to ask me anything!
+                                </div>
+                            </div>
+                        `;
+                        // Clear file display
+                        uploadedFilesDisplay.classList.remove('show');
+                        uploadedFilesDisplay.innerHTML = '';
+                    }
+                    
+                    await loadHistoryList();
+                    showToast('Conversation deleted');
+                } else {
+                    showToast(data.message || 'Delete failed', 'error');
+                }
+            } catch (error) {
+                console.error('Failed to delete conversation:', error);
+                showToast('Delete failed', 'error');
+            }
+        };
+        
+        // Click overlay to close
+        confirmModal.onclick = () => {
+            cleanup();
+        };
+    });
+}
+
+function showToast(message, type = 'success') {
+    const toast = document.createElement('div');
+    toast.className = `toast toast-${type}`;
+    toast.textContent = message;
+    toast.style.cssText = `
+        position: fixed;
+        top: 20px;
+        right: 20px;
+        background: ${type === 'error' ? '#ef4444' : '#10b981'};
+        color: white;
+        padding: 12px 20px;
+        border-radius: 8px;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+        z-index: 10000;
+        animation: slideIn 0.3s ease-out;
+    `;
+    
+    document.body.appendChild(toast);
+    
+    setTimeout(() => {
+        toast.style.animation = 'slideOut 0.3s ease-out';
+        setTimeout(() => {
+            document.body.removeChild(toast);
+        }, 300);
+    }, 3000);
+}
+
+// Load conversation
+async function loadConversation(conversationId) {
+    try {
+        const response = await fetch(`/load_conversation/${conversationId}`);
+        const result = await response.json();
+
+        if (result.success) {
+            chatContainer.innerHTML = '';
+
+            result.messages.forEach(msg => {
+                let thinkContent = '';
+                let answerContent = msg.content;
+                let timestamp = '';
+                
+                if (msg.content.includes('<<<TIME>>>')) {
+                    const parts = msg.content.split('<<<TIME>>>');
+                    answerContent = parts[0];
+                    timestamp = parts[1] || '';
+                }
+                
+                if (answerContent.includes('<<<THINK>>>')) {
+                    const parts = answerContent.split('<<<THINK>>>');
+                    if (parts.length === 2) {
+                        thinkContent = parts[0].trim();
+                        answerContent = parts[1].trim();
+                    }
+                }
+                
+                addMessage(msg.role, answerContent, thinkContent, timestamp);
+            });
+
+            currentConversationId = conversationId;
+
+            document.querySelectorAll('.history-item').forEach(item => {
+                if (item.dataset.conversationId === conversationId) {
+                    item.classList.add('active');
+                } else {
+                    item.classList.remove('active');
+                }
+            });
+
+            if (backgroundConversations.has(conversationId)) {
+                const bgConv = backgroundConversations.get(conversationId);
+                
+                if (bgConv.aiMessageElement) {
+                    const existingElement = chatContainer.querySelector('.message.ai-message:last-child');
+                    if (existingElement && existingElement !== bgConv.aiMessageElement) {
+                        existingElement.remove();
+                    }
+                    chatContainer.appendChild(bgConv.aiMessageElement);
+                    chatContainer.scrollTop = chatContainer.scrollHeight;
+                }
+                
+                disableInput();
+                typingIndicator.style.display = 'block';
+            } else {
+                enableInput();
+                typingIndicator.style.display = 'none';
+            }
+            
+            await loadUploadedFiles();
+            
+        } else {
+            showCustomAlert('Failed to load conversation: ' + result.message, 'error');
+            currentConversationId = null;
+        }
+    } catch (error) {
+        console.error('Failed to load conversation:', error);
+        showCustomAlert('An error occurred while loading the conversation', 'error');
+        currentConversationId = null;
+    }
+}
+
+async function createNewConversation() {
+    try {
+        const response = await fetch('/new_chat', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        });
+
+        const result = await response.json();
+
+        if (result.success) {
+            chatContainer.innerHTML = `
+                <div class="message ai-message">
+                    <div class="message-header">
+                        <i class="fas fa-robot"></i> AI Assistant
+                    </div>
+                    <div class="message-content">
+                        Hello! I'm your AI assistant. What can I help you with today? I can answer questions, provide suggestions, explain concepts, or just chat with you. Feel free to ask me anything!
+                    </div>
+                </div>
+            `;
+
+            currentConversationId = result.conversation_id;
+
+            document.querySelectorAll('.history-item').forEach(item => {
+                item.classList.remove('active');
+            });
+
+            enableInput();
+            typingIndicator.style.display = 'none';
+            
+            uploadedFilesDisplay.classList.remove('show');
+            uploadedFilesDisplay.innerHTML = '';
+            
+            await loadHistoryList();
+        } else {
+            showCustomAlert(result.message || 'Failed to create new conversation', 'error');
+        }
+    } catch (error) {
+        console.error('New conversation error:', error);
+        showCustomAlert('An error occurred while creating a new conversation', 'error');
+    }
+}
+
+async function sendMessage() {
+    const message = userInput.value.trim();
+    if (!message || isAIResponding) return;
+
+    userInput.value = '';
+    userInput.focus();
+
+    if (!currentConversationId) {
+        await createNewConversation();
+    }
+
+    const conversationId = currentConversationId;
+
+    disableInput();
+    typingIndicator.style.display = 'block';
+    chatContainer.scrollTop = chatContainer.scrollHeight;
+
+    let fullThink = '';
+    let fullAnswer = '';
+    let aiMessageElement = null;
+
+    try {
+        // Get currently uploaded files list for display
+        let uploadedFiles = [];
+        const uploadedFilesDisplay = document.getElementById('uploadedFilesDisplay');
+        if (uploadedFilesDisplay.classList.contains('show')) {
+            const fileCards = uploadedFilesDisplay.querySelectorAll('.file-card');
+            fileCards.forEach(card => {
+                const fileName = card.querySelector('.file-card-name').textContent;
+                uploadedFiles.push(fileName);
+            });
+        }
+
+        // Get uploaded file contents
+        let filesContext = '';
+        try {
+            const filesResponse = await fetch(`/get_uploaded_files?conversation_id=${conversationId}`);
+            const filesResult = await filesResponse.json();
+            
+            if (filesResult.success && filesResult.files.length > 0) {
+                const fileContents = [];
+                for (const file of filesResult.files) {
+                    try {
+                        const fileContentResponse = await fetch(`/get_file_content`, {
+                            method: 'POST',
+                            headers: {
+                                'Content-Type': 'application/json',
+                            },
+                            body: JSON.stringify({
+                                conversation_id: conversationId,
+                                filename: file.name
+                            })
+                        });
+                        
+                        const fileContentResult = await fileContentResponse.json();
+                        if (fileContentResult.success && fileContentResult.content) {
+                            fileContents.push(`[File: ${file.name}]\n${fileContentResult.content}`);
+                        }
+                    } catch (err) {
+                        console.warn(`Failed to get file content: ${file.name}`, err);
+                    }
+                }
+                
+                if (fileContents.length > 0) {
+                    filesContext = '\n\n[Reference Documents]\n' + fileContents.join('\n\n---\n\n');
+                }
+            }
+        } catch (err) {
+            console.warn('Failed to get file context:', err);
+        }
+
+        const combinedQuestion = filesContext ? message + filesContext : message;
+
+        const userSaveResponse = await fetch('/save_message', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                conversation_id: conversationId,
+                message: message,
+                role: 'user'
+            })
+        });
+
+        const userSaveResult = await userSaveResponse.json();
+        const userTimestamp = userSaveResult.success && userSaveResult.timestamp ? userSaveResult.timestamp : '';
+        
+        // Add user message with file info
+        const userMessageElement = document.createElement('div');
+        userMessageElement.className = 'message user-message';
+        
+        let messageHTML = '';
+        
+        // If there are files, display file list first
+        if (uploadedFiles.length > 0) {
+            messageHTML += '<div class="message-files">';
+            uploadedFiles.forEach(fileName => {
+                messageHTML += `
+                    <div class="message-file-card">
+                        <i class="fas fa-file"></i>
+                        <span>${escapeHtml(fileName)}</span>
+                    </div>
+                `;
+            });
+            messageHTML += '</div>';
+        }
+        
+        // Then the message content
+        messageHTML += `
+            <div class="message-content">
+                ${escapeHtml(message)}
+                ${userTimestamp ? `<div class="message-timestamp">${escapeHtml(userTimestamp)}</div>` : ''}
+            </div>
+        `;
+        
+        userMessageElement.innerHTML = messageHTML;
+        chatContainer.appendChild(userMessageElement);
+        
+        // Immediately clear the file display area at the bottom
+        uploadedFilesDisplay.classList.remove('show');
+        uploadedFilesDisplay.innerHTML = '';
+
+        await loadHistoryList();
+
+        abortController = new AbortController();
+        const signal = abortController.signal;
+
+        backgroundConversations.set(conversationId, {
+            abortController: abortController,
+            aiMessageElement: null,
+            fullThink: '',
+            fullAnswer: ''
+        });
+
+        const response = await fetch('/api/ask-stream', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                question: combinedQuestion
+            }),
+            signal: signal
+        });
+
+        if (!response.ok) {
+            throw new Error(`HTTP error: ${response.status} ${response.statusText}`);
+        }
+
+        const reader = response.body.getReader();
+        const decoder = new TextDecoder();
+        let isInThink = false;
+
+        typingIndicator.style.display = 'none';
+
+        while (true) {
+            const { done, value } = await reader.read();
+            if (done) break;
+
+            const chunk = decoder.decode(value, { stream: true });
+            const lines = chunk.split('\n').filter(line => line.trim());
+
+            for (const line of lines) {
+                try {
+                    const parsed = JSON.parse(line);
+
+                    if (parsed.type === "answer") {
+                        const content = parsed.content;
+                        
+                        const bgConv = backgroundConversations.get(conversationId);
+                        if (!bgConv) continue;
+                        
+                        for (let i = 0; i < content.length; i++) {
+                            const remaining = content.slice(i);
+                            
+                            if (remaining.startsWith('/think/')) {
+                                isInThink = !isInThink;
+                                i += 6;
+                                continue;
+                            }
+                            
+                            if (isInThink) {
+                                bgConv.fullThink += content[i];
+                            } else {
+                                bgConv.fullAnswer += content[i];
+                            }
+                        }
+                        
+                        if (conversationId === currentConversationId) {
+                            if (!bgConv.aiMessageElement) {
+                                bgConv.aiMessageElement = document.createElement('div');
+                                bgConv.aiMessageElement.className = 'message ai-message';
+                                bgConv.aiMessageElement.innerHTML = `
+                                    <div class="message-header">
+                                        <i class="fas fa-robot"></i> AI Assistant
+                                    </div>
+                                    <div class="message-content"></div>
+                                `;
+                                chatContainer.appendChild(bgConv.aiMessageElement);
+                            }
+                            
+                            const messageContent = bgConv.aiMessageElement.querySelector('.message-content');
+                            messageContent.innerHTML = '';
+                            
+                            if (bgConv.fullThink.trim()) {
+                                const thinkDiv = document.createElement('div');
+                                thinkDiv.className = 'think-content';
+                                thinkDiv.textContent = bgConv.fullThink.trim();
+                                messageContent.appendChild(thinkDiv);
+                                thinkDiv.scrollTop = thinkDiv.scrollHeight;
+                            }
+                            
+                            if (bgConv.fullAnswer.trim()) {
+                                const answerDiv = document.createElement('div');
+                                answerDiv.className = 'answer-content';
+                                answerDiv.textContent = bgConv.fullAnswer.trim();
+                                messageContent.appendChild(answerDiv);
+                            }
+                            
+                            renderLatex(bgConv.aiMessageElement);
+                            chatContainer.scrollTop = chatContainer.scrollHeight;
+                        }
+                    }
+                    else if (parsed.type === "references") {
+                        console.log("References:", parsed.content);
+                    }
+                    else if (parsed.type === "error") {
+                        console.error('Backend returned error:', parsed.content);
+                        const bgConv = backgroundConversations.get(conversationId);
+                        if (bgConv && conversationId === currentConversationId) {
+                            if (!bgConv.aiMessageElement) {
+                                addMessage('ai', `[Error: ${parsed.content}]`);
+                            } else {
+                                const messageContent = bgConv.aiMessageElement.querySelector('.message-content');
+                                messageContent.innerHTML += `<div class="answer-content">[Error: ${escapeHtml(parsed.content)}]</div>`;
+                            }
+                            chatContainer.scrollTop = chatContainer.scrollHeight;
+                        }
+                    }
+                } catch (e) {
+                    console.error('JSON parsing error:', e, 'Original data:', line);
+                }
+            }
+        }
+
+    } catch (error) {
+        console.error('Send message complete error:', error);
+
+        if (error.name === 'AbortError') {
+            console.log('Request aborted by user');
+        } else {
+            const errorMsg = `Sorry, an error occurred while processing the request: ${error.message}`;
+            console.error('Error details:', errorMsg);
+            if (conversationId === currentConversationId) {
+                addMessage('ai', errorMsg);
+            }
+        }
+    } finally {
+        const bgConv = backgroundConversations.get(conversationId);
+        if (bgConv && (bgConv.fullThink || bgConv.fullAnswer)) {
+            try {
+                let savedMessage = '';
+                if (bgConv.fullThink.trim()) {
+                    savedMessage = bgConv.fullThink.trim() + '<<<THINK>>>' + bgConv.fullAnswer.trim();
+                } else {
+                    savedMessage = bgConv.fullAnswer.trim();
+                }
+                
+                const saveResponse = await fetch('/save_message', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify({
+                        conversation_id: conversationId,
+                        message: savedMessage,
+                        role: 'ai'
+                    })
+                });
+                
+                const saveResult = await saveResponse.json();
+                
+                if (saveResult.success && saveResult.timestamp && bgConv.aiMessageElement && conversationId === currentConversationId) {
+                    const messageContent = bgConv.aiMessageElement.querySelector('.message-content');
+                    const timestampDiv = document.createElement('div');
+                    timestampDiv.className = 'message-timestamp';
+                    timestampDiv.textContent = saveResult.timestamp;
+                    messageContent.appendChild(timestampDiv);
+                }
+
+                await loadHistoryList();
+            } catch (saveError) {
+                console.error('Save AI message error:', saveError);
+            }
+        }
+        
+        backgroundConversations.delete(conversationId);
+        
+        if (conversationId === currentConversationId) {
+            enableInput();
+            typingIndicator.style.display = 'none';
+            chatContainer.scrollTop = chatContainer.scrollHeight;
+        }
+    }
+}
+
+function showHistorySidebar() {
+    historySidebar.classList.add('show');
+    container.classList.add('sidebar-open');
+    loadHistoryList();
+}
+
+function hideHistorySidebar() {
+    historySidebar.classList.remove('show');
+    container.classList.remove('sidebar-open');
+}
+
+uploadInputBtn.addEventListener('click', () => {
+    if (!currentConversationId) {
+        showCustomAlert('Please start a conversation before uploading files', 'warning');
+        return;
+    }
+    
+    uploadModal.style.display = 'flex';
+    loadUploadedFiles();
+});
+
+closeUpload.addEventListener('click', () => {
+    uploadModal.style.display = 'none';
+});
+
+uploadArea.addEventListener('click', () => {
+    fileInput.click();
+});
+
+fileInput.addEventListener('change', (e) => {
+    if (e.target.files.length > 0) {
+        const file = e.target.files[0];
+        
+        // Close upload modal
+        uploadModal.style.display = 'none';
+        
+        // Process file immediately
+        uploadFile(file);
+        
+        // Clear file selector
+        fileInput.value = '';
+    }
+});
+
+uploadArea.addEventListener('dragover', (e) => {
+    e.preventDefault();
+    uploadArea.classList.add('dragover');
+});
+
+uploadArea.addEventListener('dragleave', () => {
+    uploadArea.classList.remove('dragover');
+});
+
+uploadArea.addEventListener('drop', (e) => {
+    e.preventDefault();
+    uploadArea.classList.remove('dragover');
+    
+    if (e.dataTransfer.files.length > 0) {
+        const file = e.dataTransfer.files[0];
+        
+        // Close upload modal
+        uploadModal.style.display = 'none';
+        
+        // Process file immediately
+        uploadFile(file);
+    }
+});
+
+customAlertBtn.addEventListener('click', hideCustomAlert);
+customAlertOverlay.addEventListener('click', hideCustomAlert);
+
+sendBtn.addEventListener('click', sendMessage);
+stopBtn.addEventListener('click', stopAIResponse);
+newChatBtn.addEventListener('click', createNewConversation);
+sidebarNewChat.addEventListener('click', createNewConversation);
+
+userInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter' && !isAIResponding) {
+        sendMessage();
+    }
+});
+
+historyBtn.addEventListener('click', showHistorySidebar);
+closeHistory.addEventListener('click', hideHistorySidebar);
+
+deleteConfirmBtn.addEventListener('click', async () => {
+    if (currentDeleteConversationId && currentDeleteHistoryItem) {
+        await deleteConversation(currentDeleteConversationId, currentDeleteHistoryItem);
+        hideDeleteModal();
+    }
+});
+
+deleteCancelBtn.addEventListener('click', hideDeleteModal);
+
+window.addEventListener('load', async () => {
+    await createNewConversation();
+    userInput.focus();
+});
+
+userInput.addEventListener('input', function() {
+    this.style.height = 'auto';
+    this.style.height = (this.scrollHeight > 45 ? this.scrollHeight : 45) + 'px';
+});
+
+// ========== 个性化全屏界面逻辑 ==========
+
+// 打开个性化界面
+personalizationBtn.addEventListener('click', () => {
+    personalizationFullscreen.classList.add('show');
+    loadTopTopics();
+    loadSavedProfile();
+});
+
+// 关闭个性化界面
+closePersonalizationFullscreen.addEventListener('click', () => {
+    personalizationFullscreen.classList.remove('show');
+});
+
+// 性别选择
+document.querySelectorAll('input[name="gender"]').forEach(radio => {
+    radio.addEventListener('change', (e) => {
+        // 先移除所有选中样式
+        document.querySelectorAll('.radio-option').forEach(opt => {
+            opt.classList.remove('selected');
+        });
+        // 添加当前选中项的样式
+        e.target.closest('.radio-option').classList.add('selected');
+        userProfile.gender = e.target.value;
+        // 【修改】保存到 sessionStorage 而不是 localStorage
+        sessionStorage.setItem('userProfile', JSON.stringify(userProfile));
+    });
+});
+// 学历选择
+document.querySelectorAll('.select-option[data-level]').forEach(option => {
+    option.addEventListener('click', function() {
+        // 先移除所有选中样式
+        document.querySelectorAll('.select-option[data-level]').forEach(opt => {
+            opt.classList.remove('selected');
+        });
+        // 添加当前选中项的样式
+        this.classList.add('selected');
+        userProfile.education = this.dataset.level;
+        // 【修改】保存到 sessionStorage
+        sessionStorage.setItem('userProfile', JSON.stringify(userProfile));
+    });
+});
+
+// 性格选择
+document.querySelectorAll('.select-option[data-personality]').forEach(option => {
+    option.addEventListener('click', function() {
+        // 先移除所有选中样式
+        document.querySelectorAll('.select-option[data-personality]').forEach(opt => {
+            opt.classList.remove('selected');
+        });
+        // 添加当前选中项的样式
+        this.classList.add('selected');
+        userProfile.personality = this.dataset.personality;
+        // 【修改】保存到 sessionStorage
+        sessionStorage.setItem('userProfile', JSON.stringify(userProfile));
+    });
+});
+
+// 年龄输入
+userAgeInput.addEventListener('input', () => {
+    userProfile.age = userAgeInput.value;
+    // 【修改】保存到 sessionStorage
+    sessionStorage.setItem('userProfile', JSON.stringify(userProfile));
+});
+
+// 加载最常问话题
+async function loadTopTopics() {
+    try {
+        const response = await fetch('/report_preference', {
+            method: 'GET'
+        });
+        
+        if (!response.ok) {
+            throw new Error('Failed to fetch preferences');
+        }
+        
+        const data = await response.json();
+        
+        if (data.success && data.topics && data.topics.length > 0) {
+            userProfile.topics = data.topics;
+            topicsGrid.innerHTML = '';
+            data.topics.forEach((topic, index) => {
+                const topicCard = document.createElement('div');
+                topicCard.className = 'topic-card';
+                topicCard.innerHTML = `
+                    <div class="topic-number">${index + 1}</div>
+                    <div class="topic-text">${escapeHtml(topic)}</div>
+                `;
+                topicsGrid.appendChild(topicCard);
+            });
+        } else {
+            userProfile.topics = [];
+            topicsGrid.innerHTML = `
+                <div class="topic-card">
+                    <div class="topic-number">?</div>
+                    <div class="topic-text">No topic data yet. Start asking questions!</div>
+                </div>
+            `;
+        }
+    } catch (error) {
+        console.error('Failed to load top topics:', error);
+        userProfile.topics = [];
+        topicsGrid.innerHTML = `
+            <div class="topic-card">
+                <div class="topic-number">!</div>
+                <div class="topic-text">Failed to load topics. Please try again.</div>
+            </div>
+        `;
+    }
+}
+
+// 【完全重写】加载已保存的用户配置
+function loadSavedProfile() {
+    // 【新增】先清除所有选项的样式
+    document.querySelectorAll('.radio-option').forEach(opt => {
+        opt.classList.remove('selected');
+    });
+    document.querySelectorAll('.select-option').forEach(opt => {
+        opt.classList.remove('selected');
+    });
+    document.querySelectorAll('input[name="gender"]').forEach(radio => {
+        radio.checked = false;
+    });
+    userAgeInput.value = '';
+    
+    // 【修改】从 sessionStorage 读取而不是 localStorage
+    const saved = sessionStorage.getItem('userProfile');
+    if (saved) {
+        const profile = JSON.parse(saved);
+        
+        // 恢复性别
+        if (profile.gender) {
+            const genderRadio = document.querySelector(`input[name="gender"][value="${profile.gender}"]`);
+            if (genderRadio) {
+                genderRadio.checked = true;
+                genderRadio.closest('.radio-option').classList.add('selected');
+            }
+        }
+        
+        // 恢复年龄
+        if (profile.age) {
+            userAgeInput.value = profile.age;
+        }
+        
+        // 恢复学历
+        if (profile.education) {
+            const eduOption = document.querySelector(`.select-option[data-level="${profile.education}"]`);
+            if (eduOption) {
+                eduOption.classList.add('selected');
+            }
+        }
+        
+        // 恢复性格
+        if (profile.personality) {
+            const personalityOption = document.querySelector(`.select-option[data-personality="${profile.personality}"]`);
+            if (personalityOption) {
+                personalityOption.classList.add('selected');
+            }
+        }
+        
+        userProfile = profile;
+    } else {
+        // 【新增】如果没有保存的数据，重置 userProfile
+        userProfile = {
+            gender: '',
+            age: '',
+            education: '',
+            personality: '',
+            topics: []
+        };
+    }
+}
+// 生成学习报告
+// 修改生成学习报告的函数：
+generateReportBtn.addEventListener('click', async () => {
+    // 验证必填项
+    if (!userProfile.gender || !userProfile.age || !userProfile.education || !userProfile.personality) {
+        showCustomAlert('Please complete all personal information fields', 'warning', '⚠️ Incomplete Information');
+        return;
+    }
+    
+    if (userProfile.topics.length === 0) {
+        showCustomAlert('No topic data available. Please ask some questions first.', 'warning', '⚠️ No Data');
+        return;
+    }
+    
+    // 【修改】保存用户配置到 sessionStorage
+    sessionStorage.setItem('userProfile', JSON.stringify(userProfile));
+    
+    // 禁用按钮并显示加载状态
+    generateReportBtn.disabled = true;
+    reportSection.classList.add('show');
+    reportActions.style.display = 'none'; // 隐藏下载按钮
+    reportContent.innerHTML = `
+        <div class="loading-spinner">
+            <i class="fas fa-spinner fa-spin"></i>
+            <div class="loading-text">Generating your personalized learning report...</div>
+        </div>
+    `;
+    
+    try {
+        // 构建增强的提示词
+        const genderText = userProfile.gender === 'male' ? 'male' : userProfile.gender === 'female' ? 'female' : 'they';
+        const educationText = {
+            'elementary': 'elementary school',
+            'middle': 'middle school',
+            'high': 'high school',
+            'college': 'college',
+            'graduate': 'graduate school'
+        }[userProfile.education] || userProfile.education;
+        
+        const personalityText = {
+            'analytical': 'an analytical thinker who enjoys logical problem-solving',
+            'creative': 'a creative learner who thinks outside the box',
+            'practical': 'a practical learner who prefers hands-on approaches',
+            'social': 'a social learner who learns best through interaction'
+        }[userProfile.personality] || userProfile.personality;
+        
+        const topicsText = userProfile.topics.map((topic, i) => `${i + 1}. ${topic}`).join('\n');
+        
+        const enhancedPrompt = `
+I am a ${userProfile.age}-year-old ${genderText} currently studying in ${educationText}. I am ${personalityText}.
+
+Based on my learning history, here are my top 5 most frequently asked topics:
+${topicsText}
+
+Please generate a comprehensive and personalized learning report for me that includes:
+
+1. **Learning Pattern Analysis**: Analyze my most asked topics and identify my learning interests and knowledge gaps.
+
+2. **Personalized Study Suggestions**: Provide 3-5 specific, actionable study recommendations tailored to my age, education level, and personality type. Each suggestion should:
+   - Address my specific areas of interest
+   - Be appropriate for my education level
+   - Match my learning style
+   - Include practical next steps
+
+3. **Resource Recommendations**: Suggest 2-3 learning resources (books, websites, courses) that would help me deepen my understanding in these areas.
+
+4. **Growth Roadmap**: Create a short-term (1-2 months) learning plan with clear milestones.
+
+Please write the report in a warm, encouraging tone that motivates me to continue learning. Keep it concise but comprehensive (around 300-400 words).
+`;
+        
+        const response = await fetch('/generate_study_suggestion', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                topics: [enhancedPrompt]
+            })
+        });
+        
+        const data = await response.json();
+        
+        if (data.success) {
+            // 显示完整的报告
+            reportContent.textContent = data.suggestion;
+            // 显示下载按钮
+            reportActions.style.display = 'flex';
+        } else {
+            reportContent.innerHTML = `
+                <div style="text-align: center; color: #e74c3c;">
+                    <i class="fas fa-exclamation-triangle" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                    <p>${data.message || 'Failed to generate report'}</p>
+                </div>
+            `;
+        }
+    } catch (error) {
+        console.error('Failed to generate report:', error);
+        reportContent.innerHTML = `
+            <div style="text-align: center; color: #e74c3c;">
+                <i class="fas fa-times-circle" style="font-size: 2rem; margin-bottom: 10px;"></i>
+                <p>Network error. Please try again.</p>
+            </div>
+        `;
+    } finally {
+        // 重新启用按钮
+        generateReportBtn.disabled = false;
+    }
+});
+
+// 新增：下载PDF功能
+downloadPdfBtn.addEventListener('click', async () => {
+    try {
+        downloadPdfBtn.disabled = true;
+        downloadPdfBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Generating PDF...';
+        
+        const { jsPDF } = window.jspdf;
+        const doc = new jsPDF();
+        
+        // PDF配置
+        const pageWidth = doc.internal.pageSize.getWidth();
+        const pageHeight = doc.internal.pageSize.getHeight();
+        const margin = 20;
+        const lineHeight = 7;
+        let yPosition = margin;
+        
+        // 添加标题
+        doc.setFontSize(20);
+        doc.setFont(undefined, 'bold');
+        doc.text('Personalized Learning Report', pageWidth / 2, yPosition, { align: 'center' });
+        yPosition += 15;
+        
+        // 添加生成日期
+        doc.setFontSize(10);
+        doc.setFont(undefined, 'normal');
+        const today = new Date().toLocaleDateString('en-US', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+        });
+        doc.text(`Generated on: ${today}`, pageWidth / 2, yPosition, { align: 'center' });
+        yPosition += 15;
+        
+        // 添加分隔线
+        doc.setLineWidth(0.5);
+        doc.line(margin, yPosition, pageWidth - margin, yPosition);
+        yPosition += 10;
+        
+        // 个人信息部分
+        doc.setFontSize(14);
+        doc.setFont(undefined, 'bold');
+        doc.text('Personal Information', margin, yPosition);
+        yPosition += 10;
+        
+        doc.setFontSize(11);
+        doc.setFont(undefined, 'normal');
+        
+        // 性别
+        const genderText = userProfile.gender.charAt(0).toUpperCase() + userProfile.gender.slice(1);
+        doc.text(`Gender: ${genderText}`, margin + 5, yPosition);
+        yPosition += lineHeight;
+        
+        // 年龄
+        doc.text(`Age: ${userProfile.age} years old`, margin + 5, yPosition);
+        yPosition += lineHeight;
+        
+        // 学历
+        const educationText = {
+            'elementary': 'Elementary School',
+            'middle': 'Middle School',
+            'high': 'High School',
+            'college': 'College',
+            'graduate': 'Graduate School'
+        }[userProfile.education] || userProfile.education;
+        doc.text(`Education Level: ${educationText}`, margin + 5, yPosition);
+        yPosition += lineHeight;
+        
+        // 性格
+        const personalityText = userProfile.personality.charAt(0).toUpperCase() + userProfile.personality.slice(1);
+        doc.text(`Learning Style: ${personalityText}`, margin + 5, yPosition);
+        yPosition += 12;
+        
+        // 最常问话题
+        doc.setFontSize(14);
+        doc.setFont(undefined, 'bold');
+        doc.text('Most Frequently Asked Topics', margin, yPosition);
+        yPosition += 10;
+        
+        doc.setFontSize(11);
+        doc.setFont(undefined, 'normal');
+        userProfile.topics.forEach((topic, index) => {
+            // 检查是否需要新页面
+            if (yPosition > pageHeight - 30) {
+                doc.addPage();
+                yPosition = margin;
+            }
+            
+            const topicText = `${index + 1}. ${topic}`;
+            const lines = doc.splitTextToSize(topicText, pageWidth - margin * 2 - 10);
+            lines.forEach(line => {
+                doc.text(line, margin + 5, yPosition);
+                yPosition += lineHeight;
+            });
+        });
+        yPosition += 5;
+        
+        // 添加分隔线
+        if (yPosition > pageHeight - 40) {
+            doc.addPage();
+            yPosition = margin;
+        }
+        doc.line(margin, yPosition, pageWidth - margin, yPosition);
+        yPosition += 10;
+        
+        // 学习报告内容
+        doc.setFontSize(14);
+        doc.setFont(undefined, 'bold');
+        doc.text('Learning Analysis & Recommendations', margin, yPosition);
+        yPosition += 10;
+        
+        doc.setFontSize(11);
+        doc.setFont(undefined, 'normal');
+        
+        const reportText = reportContent.textContent;
+        const reportLines = doc.splitTextToSize(reportText, pageWidth - margin * 2);
+        
+        reportLines.forEach(line => {
+            // 检查是否需要新页面
+            if (yPosition > pageHeight - 20) {
+                doc.addPage();
+                yPosition = margin;
+            }
+            
+            // 检测标题（以数字开头或包含**）
+            if (line.match(/^\d+\./) || line.includes('**')) {
+                doc.setFont(undefined, 'bold');
+                const cleanLine = line.replace(/\*\*/g, '');
+                doc.text(cleanLine, margin, yPosition);
+                doc.setFont(undefined, 'normal');
+            } else {
+                doc.text(line, margin, yPosition);
+            }
+            yPosition += lineHeight;
+        });
+        
+        // 添加页脚
+        const totalPages = doc.internal.getNumberOfPages();
+        for (let i = 1; i <= totalPages; i++) {
+            doc.setPage(i);
+            doc.setFontSize(9);
+            doc.setFont(undefined, 'italic');
+            doc.text(
+                `Page ${i} of ${totalPages}`,
+                pageWidth / 2,
+                pageHeight - 10,
+                { align: 'center' }
+            );
+        }
+        
+        // 保存PDF
+        const fileName = `Learning_Report_${userProfile.age}yo_${today.replace(/\s/g, '_')}.pdf`;
+        doc.save(fileName);
+        
+        showCustomAlert('PDF downloaded successfully!', 'success', '✅ Download Complete');
+        
+    } catch (error) {
+        console.error('PDF generation error:', error);
+        showCustomAlert('Failed to generate PDF. Please try again.', 'error', '❌ Error');
+    } finally {
+        downloadPdfBtn.disabled = false;
+        downloadPdfBtn.innerHTML = '<i class="fas fa-file-pdf"></i> Download Report as PDF';
+    }
+});
+
+
+// 画图按钮点击事件
+const graphingBtn = document.getElementById('graphingBtn');
+graphingBtn.addEventListener('click', () => {
+    window.location.href = '/graphing';
+});
+</script>
+</body>
+</html>

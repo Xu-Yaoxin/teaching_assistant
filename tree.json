@@ -1,0 +1,3753 @@
+{
+  "name": "Mathematics",
+  "children": [
+    {
+      "name": "Algebra",
+      "children": [
+        {
+          "name": "Elementary Algebra",
+          "children": [
+            {
+              "name": "Solving and Applications of Linear Equations in One Variable",
+              "history_records": []
+            },
+            {
+              "name": "Solving Systems of Linear Equations in Two Variables",
+              "history_records": []
+            },
+            {
+              "name": "Factoring Techniques and Methods",
+              "history_records": []
+            },
+            {
+              "name": "Fraction Operations and Fractional Equations",
+              "history_records": []
+            },
+            {
+              "name": "Radical Operations and Irrational Equations",
+              "history_records": []
+            },
+            {
+              "name": "Solving and Proving Inequalities",
+              "history_records": []
+            },
+            {
+              "name": "Function Concepts and Basic Properties",
+              "history_records": []
+            },
+            {
+              "name": "Quadratic Function Graphs and Properties",
+              "history_records": []
+            },
+            {
+              "name": "Exponential and Logarithmic Operations",
+              "history_records": []
+            },
+            {
+              "name": "Sequences and Mathematical Induction",
+              "history_records": []
+            },
+            {
+              "name": "Binomial Theorem and Applications",
+              "history_records": []
+            },
+            {
+              "name": "Basic Complex Number Operations",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Linear Algebra",
+          "children": [
+            {
+              "name": "Matrix Operations and Properties",
+              "history_records": []
+            },
+            {
+              "name": "Determinant Calculation and Applications",
+              "history_records": []
+            },
+            {
+              "name": "Solving Systems of Linear Equations",
+              "history_records": []
+            },
+            {
+              "name": "Vector Spaces and Subspaces",
+              "history_records": []
+            },
+            {
+              "name": "Linear Dependence and Independence",
+              "history_records": []
+            },
+            {
+              "name": "Basis and Dimension Concepts",
+              "history_records": []
+            },
+            {
+              "name": "Linear Transformations and Matrix Representations",
+              "history_records": []
+            },
+            {
+              "name": "Eigenvalues and Eigenvectors",
+              "history_records": []
+            },
+            {
+              "name": "Diagonalization and Similar Matrices",
+              "history_records": []
+            },
+            {
+              "name": "Orthogonality and Orthogonal Projection",
+              "history_records": []
+            },
+            {
+              "name": "Quadratic Forms and Canonical Forms",
+              "history_records": []
+            },
+            {
+              "name": "Singular Value Decomposition (SVD)",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Abstract Algebra",
+          "children": [
+            {
+              "name": "Group Definition and Basic Properties",
+              "history_records": []
+            },
+            {
+              "name": "Subgroups and Coset Decomposition",
+              "history_records": []
+            },
+            {
+              "name": "Normal Subgroups and Quotient Groups",
+              "history_records": []
+            },
+            {
+              "name": "Group Homomorphisms and Isomorphism Theorems",
+              "history_records": []
+            },
+            {
+              "name": "Cyclic Groups and Permutation Groups",
+              "history_records": []
+            },
+            {
+              "name": "Ring Definition and Classification",
+              "history_records": []
+            },
+            {
+              "name": "Ideals and Quotient Ring Construction",
+              "history_records": []
+            },
+            {
+              "name": "Integral Domains and Field Characteristics",
+              "history_records": []
+            },
+            {
+              "name": "Polynomial Ring Theory",
+              "history_records": []
+            },
+            {
+              "name": "Field Extension Basic Theory",
+              "history_records": []
+            },
+            {
+              "name": "Introduction to Galois Theory",
+              "history_records": []
+            },
+            {
+              "name": "Basic Concepts of Modules",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Polynomial Algebra",
+          "children": [
+            {
+              "name": "Basic Polynomial Operations",
+              "history_records": []
+            },
+            {
+              "name": "Polynomial Factorization",
+              "history_records": []
+            },
+            {
+              "name": "Greatest Common Divisor of Polynomials",
+              "history_records": []
+            },
+            {
+              "name": "Polynomial Roots and Coefficient Relations",
+              "history_records": []
+            },
+            {
+              "name": "Multiple Root Criterion",
+              "history_records": []
+            },
+            {
+              "name": "Symmetric Polynomial Theory",
+              "history_records": []
+            },
+            {
+              "name": "Resultants and Discriminants",
+              "history_records": []
+            },
+            {
+              "name": "Polynomial Congruence Theory",
+              "history_records": []
+            },
+            {
+              "name": "Multivariate Polynomial Processing",
+              "history_records": []
+            },
+            {
+              "name": "Gröbner Basis Methods",
+              "history_records": []
+            },
+            {
+              "name": "Fundamental Theorem of Algebra",
+              "history_records": []
+            },
+            {
+              "name": "Polynomial Interpolation Applications",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Group Theory",
+          "children": [
+            {
+              "name": "Group Axioms and Basic Examples",
+              "history_records": []
+            },
+            {
+              "name": "Subgroup Determination and Generation",
+              "history_records": []
+            },
+            {
+              "name": "Cyclic Group Structure Theorem",
+              "history_records": []
+            },
+            {
+              "name": "Permutation Groups and Symmetric Groups",
+              "history_records": []
+            },
+            {
+              "name": "Group Actions and Orbit Formula",
+              "history_records": []
+            },
+            {
+              "name": "Sylow Theorem Applications",
+              "history_records": []
+            },
+            {
+              "name": "Group Isomorphism Classification Problems",
+              "history_records": []
+            },
+            {
+              "name": "Direct Product and Semidirect Product Construction",
+              "history_records": []
+            },
+            {
+              "name": "Solvable Groups and Nilpotent Groups",
+              "history_records": []
+            },
+            {
+              "name": "Free Groups and Representation Theory",
+              "history_records": []
+            },
+            {
+              "name": "Finite Group Classification Theory",
+              "history_records": []
+            },
+            {
+              "name": "Group Applications in Cryptography",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Ring Theory",
+          "children": [
+            {
+              "name": "Ring Axioms and Basic Examples",
+              "history_records": []
+            },
+            {
+              "name": "Subring and Ideal Determination",
+              "history_records": []
+            },
+            {
+              "name": "Principal Ideal Domain Properties",
+              "history_records": []
+            },
+            {
+              "name": "Maximal Ideals and Prime Ideals",
+              "history_records": []
+            },
+            {
+              "name": "Ring Homomorphism Basic Theorems",
+              "history_records": []
+            },
+            {
+              "name": "Integral Domains and Field of Fractions Construction",
+              "history_records": []
+            },
+            {
+              "name": "Unique Factorization Domains",
+              "history_records": []
+            },
+            {
+              "name": "Noetherian Rings and Artinian Rings",
+              "history_records": []
+            },
+            {
+              "name": "Localization Methods and Techniques",
+              "history_records": []
+            },
+            {
+              "name": "Polynomial Ring Structure Analysis",
+              "history_records": []
+            },
+            {
+              "name": "Module Theory Basics and Tensor Products",
+              "history_records": []
+            },
+            {
+              "name": "Ring Theory Applications in Coding",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Field Theory",
+          "children": [
+            {
+              "name": "Field Extension Basic Concepts",
+              "history_records": []
+            },
+            {
+              "name": "Algebraic Extensions and Transcendental Extensions",
+              "history_records": []
+            },
+            {
+              "name": "Finite Field Construction and Properties",
+              "history_records": []
+            },
+            {
+              "name": "Splitting Fields and Normal Extensions",
+              "history_records": []
+            },
+            {
+              "name": "Separable Extensions and Inseparable Extensions",
+              "history_records": []
+            },
+            {
+              "name": "Galois Correspondence Theorem",
+              "history_records": []
+            },
+            {
+              "name": "Finite Galois Group Computation",
+              "history_records": []
+            },
+            {
+              "name": "Straightedge and Compass Constructions Possibility",
+              "history_records": []
+            },
+            {
+              "name": "Solvability by Radicals",
+              "history_records": []
+            },
+            {
+              "name": "Field Embeddings and Isomorphisms",
+              "history_records": []
+            },
+            {
+              "name": "Transcendental Basis and Transcendence Degree",
+              "history_records": []
+            },
+            {
+              "name": "Field Theory Applications in Cryptography",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Module Theory",
+          "children": [
+            {
+              "name": "Module Definition and Basic Examples",
+              "history_records": []
+            },
+            {
+              "name": "Submodules and Quotient Module Construction",
+              "history_records": []
+            },
+            {
+              "name": "Module Homomorphisms and Isomorphisms",
+              "history_records": []
+            },
+            {
+              "name": "Free Modules and Basis Theory",
+              "history_records": []
+            },
+            {
+              "name": "Exact Sequences and Diagrams",
+              "history_records": []
+            },
+            {
+              "name": "Projective Modules and Injective Modules",
+              "history_records": []
+            },
+            {
+              "name": "Flat Module Determination Properties",
+              "history_records": []
+            },
+            {
+              "name": "Direct Sum Decomposition of Modules",
+              "history_records": []
+            },
+            {
+              "name": "Modules over Principal Ideal Domains",
+              "history_records": []
+            },
+            {
+              "name": "Jordan-Hölder Theorem",
+              "history_records": []
+            },
+            {
+              "name": "Krull-Schmidt Theorem",
+              "history_records": []
+            },
+            {
+              "name": "Module Applications in Representation Theory",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Commutative Algebra",
+          "children": [
+            {
+              "name": "Commutative Ring Basic Theory",
+              "history_records": []
+            },
+            {
+              "name": "Local Rings and Valuation Rings",
+              "history_records": []
+            },
+            {
+              "name": "Noetherian Ring Properties",
+              "history_records": []
+            },
+            {
+              "name": "Hilbert Basis Theorem",
+              "history_records": []
+            },
+            {
+              "name": "Primary Decomposition Theory",
+              "history_records": []
+            },
+            {
+              "name": "Dimension Theory Introduction",
+              "history_records": []
+            },
+            {
+              "name": "Regular Rings and Cohen-Macaulay Rings",
+              "history_records": []
+            },
+            {
+              "name": "Completion Techniques and Methods",
+              "history_records": []
+            },
+            {
+              "name": "Flatness Determination Criteria",
+              "history_records": []
+            },
+            {
+              "name": "Smooth and Étale Morphisms",
+              "history_records": []
+            },
+            {
+              "name": "Commutative Algebra Applications in Geometry",
+              "history_records": []
+            },
+            {
+              "name": "Homological Algebra Methods",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Non-commutative Algebra",
+          "children": [
+            {
+              "name": "Non-commutative Ring Examples",
+              "history_records": []
+            },
+            {
+              "name": "Simple Rings and Semisimple Rings",
+              "history_records": []
+            },
+            {
+              "name": "Jacobson Radical Theory",
+              "history_records": []
+            },
+            {
+              "name": "Wedderburn-Artin Theorem",
+              "history_records": []
+            },
+            {
+              "name": "Central Simple Algebra Theory",
+              "history_records": []
+            },
+            {
+              "name": "Brauer Group Construction",
+              "history_records": []
+            },
+            {
+              "name": "Non-commutative Polynomial Rings",
+              "history_records": []
+            },
+            {
+              "name": "Quantum Groups Introduction",
+              "history_records": []
+            },
+            {
+              "name": "Hopf Algebra Structures",
+              "history_records": []
+            },
+            {
+              "name": "Representation Theory Basic Concepts",
+              "history_records": []
+            },
+            {
+              "name": "Introduction to Non-commutative Geometry",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Physics",
+              "history_records": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Geometry",
+      "children": [
+        {
+          "name": "Euclidean Geometry",
+          "children": [
+            {
+              "name": "Parallel Line Properties and Determination Theorems",
+              "history_records": []
+            },
+            {
+              "name": "Triangle Congruence and Similarity Determination",
+              "history_records": []
+            },
+            {
+              "name": "Circle Properties and Chord-Tangent Angle Theorems",
+              "history_records": []
+            },
+            {
+              "name": "Pythagorean Theorem and Its Extensions",
+              "history_records": []
+            },
+            {
+              "name": "Similarity Transformations and Homothety",
+              "history_records": []
+            },
+            {
+              "name": "Geometric Inequality Proof Techniques",
+              "history_records": []
+            },
+            {
+              "name": "Triangle Centers Properties Applications",
+              "history_records": []
+            },
+            {
+              "name": "Power of a Point Theorem and Radical Axis Theory",
+              "history_records": []
+            },
+            {
+              "name": "Geometric Loci and Construction Problems",
+              "history_records": []
+            },
+            {
+              "name": "Solid Geometry Volume and Surface Area Calculations",
+              "history_records": []
+            },
+            {
+              "name": "Spherical Geometry Basic Properties",
+              "history_records": []
+            },
+            {
+              "name": "Coordinate Geometry and Analytic Methods",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Non-Euclidean Geometry",
+          "children": [
+            {
+              "name": "Parallel Postulate Independence Analysis",
+              "history_records": []
+            },
+            {
+              "name": "Hyperbolic Geometry Basic Models",
+              "history_records": []
+            },
+            {
+              "name": "Spherical Geometry Triangle Properties",
+              "history_records": []
+            },
+            {
+              "name": "Non-Euclidean Distance and Angle Measurement",
+              "history_records": []
+            },
+            {
+              "name": "Isometric Transformations and Motion Groups",
+              "history_records": []
+            },
+            {
+              "name": "Curvature Concepts and Calculation",
+              "history_records": []
+            },
+            {
+              "name": "Triangle Angle Sum Theorem",
+              "history_records": []
+            },
+            {
+              "name": "Non-Euclidean Geometry and Relativity",
+              "history_records": []
+            },
+            {
+              "name": "Poincaré Disk Model",
+              "history_records": []
+            },
+            {
+              "name": "Upper Half-Plane Model Applications",
+              "history_records": []
+            },
+            {
+              "name": "Non-Euclidean Geometry Axiom Systems",
+              "history_records": []
+            },
+            {
+              "name": "Geometric Model Transformation Methods",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Analytic Geometry",
+          "children": [
+            {
+              "name": "Coordinate System Establishment and Transformation",
+              "history_records": []
+            },
+            {
+              "name": "Line Equations and Position Relationships",
+              "history_records": []
+            },
+            {
+              "name": "Conic Section Standard Equations",
+              "history_records": []
+            },
+            {
+              "name": "Curve Intersection Solution Methods",
+              "history_records": []
+            },
+            {
+              "name": "Parametric Equations and Polar Coordinates",
+              "history_records": []
+            },
+            {
+              "name": "Space Line and Plane Equations",
+              "history_records": []
+            },
+            {
+              "name": "Quadric Surface Classification Determination",
+              "history_records": []
+            },
+            {
+              "name": "Coordinate Transformations and Standardization",
+              "history_records": []
+            },
+            {
+              "name": "Vector Algebra Operations Applications",
+              "history_records": []
+            },
+            {
+              "name": "Algebraicization of Geometric Problems",
+              "history_records": []
+            },
+            {
+              "name": "Distance Formulas and Angle Calculations",
+              "history_records": []
+            },
+            {
+              "name": "Projection and Symmetry Transformations",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Differential Geometry",
+          "children": [
+            {
+              "name": "Curve Theory Fundamental Theorem",
+              "history_records": []
+            },
+            {
+              "name": "First Fundamental Form of Surfaces",
+              "history_records": []
+            },
+            {
+              "name": "Second Fundamental Form of Surfaces",
+              "history_records": []
+            },
+            {
+              "name": "Principal Curvature and Gaussian Curvature",
+              "history_records": []
+            },
+            {
+              "name": "Geodesics and Shortest Paths",
+              "history_records": []
+            },
+            {
+              "name": "Surface Theory Fundamental Equations",
+              "history_records": []
+            },
+            {
+              "name": "Riemannian Metrics and Connections",
+              "history_records": []
+            },
+            {
+              "name": "Curvature Tensor Calculation",
+              "history_records": []
+            },
+            {
+              "name": "Riemannian Geometry Introduction",
+              "history_records": []
+            },
+            {
+              "name": "Submanifold Geometric Properties",
+              "history_records": []
+            },
+            {
+              "name": "Moving Frame Method Applications",
+              "history_records": []
+            },
+            {
+              "name": "Applications in General Relativity",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Algebraic Geometry",
+          "children": [
+            {
+              "name": "Affine Algebraic Variety Definition",
+              "history_records": []
+            },
+            {
+              "name": "Projective Algebraic Variety Construction",
+              "history_records": []
+            },
+            {
+              "name": "Zariski Topology Properties",
+              "history_records": []
+            },
+            {
+              "name": "Regular Functions and Morphisms",
+              "history_records": []
+            },
+            {
+              "name": "Divisor Theory and Linear Systems",
+              "history_records": []
+            },
+            {
+              "name": "Intersection Theory Introduction",
+              "history_records": []
+            },
+            {
+              "name": "Cohomology Theory Applications",
+              "history_records": []
+            },
+            {
+              "name": "Algebraic Curve Classification",
+              "history_records": []
+            },
+            {
+              "name": "Algebraic Surface Properties",
+              "history_records": []
+            },
+            {
+              "name": "Singularity Resolution Theory",
+              "history_records": []
+            },
+            {
+              "name": "Moduli Space Concepts",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Coding Theory",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Projective Geometry",
+          "children": [
+            {
+              "name": "Projective Plane and Extensions",
+              "history_records": []
+            },
+            {
+              "name": "Cross Ratio and Harmonic Division",
+              "history_records": []
+            },
+            {
+              "name": "Duality Principle Applications",
+              "history_records": []
+            },
+            {
+              "name": "Projective Transformation Group Theory",
+              "history_records": []
+            },
+            {
+              "name": "Projective Classification of Conic Sections",
+              "history_records": []
+            },
+            {
+              "name": "Desargues Theorem Proof",
+              "history_records": []
+            },
+            {
+              "name": "Pappus Theorem Applications",
+              "history_records": []
+            },
+            {
+              "name": "Projective Coordinate Establishment",
+              "history_records": []
+            },
+            {
+              "name": "Complex Projective Space Properties",
+              "history_records": []
+            },
+            {
+              "name": "Projective Geometry and Vision",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Computer Graphics",
+              "history_records": []
+            },
+            {
+              "name": "Projective Measurement Theory",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Topological Geometry",
+          "children": [
+            {
+              "name": "Topological Space Basic Concepts",
+              "history_records": []
+            },
+            {
+              "name": "Continuity and Homeomorphic Mappings",
+              "history_records": []
+            },
+            {
+              "name": "Connectedness and Compactness",
+              "history_records": []
+            },
+            {
+              "name": "Quotient Spaces and Gluing Construction",
+              "history_records": []
+            },
+            {
+              "name": "Fundamental Group Computation Applications",
+              "history_records": []
+            },
+            {
+              "name": "Covering Space Theory",
+              "history_records": []
+            },
+            {
+              "name": "Homology Group Introduction",
+              "history_records": []
+            },
+            {
+              "name": "Manifold Definition and Examples",
+              "history_records": []
+            },
+            {
+              "name": "Orientation and Triangulability",
+              "history_records": []
+            },
+            {
+              "name": "Morse Theory Applications",
+              "history_records": []
+            },
+            {
+              "name": "Fixed Point Theorem Proof",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Data Analysis",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Discrete Geometry",
+          "children": [
+            {
+              "name": "Convex Sets and Convex Hull Algorithms",
+              "history_records": []
+            },
+            {
+              "name": "Helly Theorem and Applications",
+              "history_records": []
+            },
+            {
+              "name": "Combinatorial Geometry Counting Problems",
+              "history_records": []
+            },
+            {
+              "name": "Extremal Set Theory Methods",
+              "history_records": []
+            },
+            {
+              "name": "Lattice Points and Pick's Theorem",
+              "history_records": []
+            },
+            {
+              "name": "Geometric Graph Theory Problems",
+              "history_records": []
+            },
+            {
+              "name": "Packing and Covering Problems",
+              "history_records": []
+            },
+            {
+              "name": "Subdivision and Triangulation",
+              "history_records": []
+            },
+            {
+              "name": "Oriented Matroid Theory",
+              "history_records": []
+            },
+            {
+              "name": "Discrete Curvature Concepts",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Computational Geometry",
+              "history_records": []
+            },
+            {
+              "name": "Combinatorial Optimization Problems",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Computational Geometry",
+          "children": [
+            {
+              "name": "Convex Hull Algorithm Implementation",
+              "history_records": []
+            },
+            {
+              "name": "Voronoi Diagram Construction",
+              "history_records": []
+            },
+            {
+              "name": "Delaunay Triangulation",
+              "history_records": []
+            },
+            {
+              "name": "Line Segment Intersection Detection",
+              "history_records": []
+            },
+            {
+              "name": "Point Location Query Algorithms",
+              "history_records": []
+            },
+            {
+              "name": "Polygon Boolean Operations",
+              "history_records": []
+            },
+            {
+              "name": "Closest Pair of Points Problem",
+              "history_records": []
+            },
+            {
+              "name": "Range Search Data Structures",
+              "history_records": []
+            },
+            {
+              "name": "Motion Planning Algorithms",
+              "history_records": []
+            },
+            {
+              "name": "Visibility Graph Computation",
+              "history_records": []
+            },
+            {
+              "name": "Geometric Data Structure Design",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Robotics",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Fractal Geometry",
+          "children": [
+            {
+              "name": "Hausdorff Dimension Calculation",
+              "history_records": []
+            },
+            {
+              "name": "Self-Similar Set Construction",
+              "history_records": []
+            },
+            {
+              "name": "Iterated Function System Methods",
+              "history_records": []
+            },
+            {
+              "name": "Fractal Interpolation Techniques",
+              "history_records": []
+            },
+            {
+              "name": "Fractional Brownian Motion",
+              "history_records": []
+            },
+            {
+              "name": "Multifractal Analysis",
+              "history_records": []
+            },
+            {
+              "name": "Fractal Applications in Natural Phenomena",
+              "history_records": []
+            },
+            {
+              "name": "Fractal Image Compression",
+              "history_records": []
+            },
+            {
+              "name": "Random Fractal Generation",
+              "history_records": []
+            },
+            {
+              "name": "Dimension Theory In-Depth",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Dynamical Systems",
+              "history_records": []
+            },
+            {
+              "name": "Fractal Art Design",
+              "history_records": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Ordinary Differential Equations",
+      "children": [
+        {
+          "name": "Mathematical Analysis",
+          "children": [
+            {
+              "name": "Limit Theory and ε-δ Language",
+              "history_records": []
+            },
+            {
+              "name": "Function Continuity and Uniform Continuity",
+              "history_records": []
+            },
+            {
+              "name": "Derivative Calculation and Mean Value Theorem",
+              "history_records": []
+            },
+            {
+              "name": "Taylor's Formula and Function Approximation",
+              "history_records": []
+            },
+            {
+              "name": "Riemann Integral Theory and Calculation",
+              "history_records": []
+            },
+            {
+              "name": "Improper Integral Convergence Tests",
+              "history_records": []
+            },
+            {
+              "name": "Uniform Convergence of Function Series",
+              "history_records": []
+            },
+            {
+              "name": "Power Series and Analytic Functions",
+              "history_records": []
+            },
+            {
+              "name": "Multivariable Function Differential Calculus",
+              "history_records": []
+            },
+            {
+              "name": "Multiple Integral Calculation and Variable Substitution",
+              "history_records": []
+            },
+            {
+              "name": "Curve and Surface Integral Theory",
+              "history_records": []
+            },
+            {
+              "name": "Fourier Series Expansion Applications",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Real Analysis",
+          "children": [
+            {
+              "name": "Real Number Completeness Theory",
+              "history_records": []
+            },
+            {
+              "name": "Lebesgue Measure Construction",
+              "history_records": []
+            },
+            {
+              "name": "Measurable Function Property Determination",
+              "history_records": []
+            },
+            {
+              "name": "Lebesgue Integral Theory",
+              "history_records": []
+            },
+            {
+              "name": "Convergence Theorem Applications (Monotone, Dominated, Fatou)",
+              "history_records": []
+            },
+            {
+              "name": "L^p Spaces and Norm Theory",
+              "history_records": []
+            },
+            {
+              "name": "Signed Measures and Radon-Nikodym Theorem",
+              "history_records": []
+            },
+            {
+              "name": "Relationship Between Differentiation and Integration",
+              "history_records": []
+            },
+            {
+              "name": "Hardy-Littlewood Maximal Function",
+              "history_records": []
+            },
+            {
+              "name": "Covering Lemmas and Calderón-Zygmund Theory",
+              "history_records": []
+            },
+            {
+              "name": "Abstract Measures and Integration",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Probability Theory",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Complex Analysis",
+          "children": [
+            {
+              "name": "Analytic Function Cauchy-Riemann Equations",
+              "history_records": []
+            },
+            {
+              "name": "Cauchy Integral Theorem and Formula",
+              "history_records": []
+            },
+            {
+              "name": "Power Series Expansion and Radius of Convergence",
+              "history_records": []
+            },
+            {
+              "name": "Residue Theorem for Real Integral Calculation",
+              "history_records": []
+            },
+            {
+              "name": "Analytic Continuation and Riemann Surfaces",
+              "history_records": []
+            },
+            {
+              "name": "Conformal Mapping and Riemann Mapping Theorem",
+              "history_records": []
+            },
+            {
+              "name": "Entire Functions and Meromorphic Functions Theory",
+              "history_records": []
+            },
+            {
+              "name": "Harmonic Functions and Dirichlet Problem",
+              "history_records": []
+            },
+            {
+              "name": "Elliptic Functions and Modular Forms",
+              "history_records": []
+            },
+            {
+              "name": "Value Distribution Theory and Nevanlinna Theory",
+              "history_records": []
+            },
+            {
+              "name": "Several Complex Variables Introduction",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Fluid Mechanics",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Functional Analysis",
+          "children": [
+            {
+              "name": "Normed Spaces and Banach Spaces",
+              "history_records": []
+            },
+            {
+              "name": "Inner Product Spaces and Hilbert Spaces",
+              "history_records": []
+            },
+            {
+              "name": "Linear Operator Basic Properties",
+              "history_records": []
+            },
+            {
+              "name": "Open Mapping and Closed Graph Theorems",
+              "history_records": []
+            },
+            {
+              "name": "Hahn-Banach Extension Theorem",
+              "history_records": []
+            },
+            {
+              "name": "Uniform Boundedness Principle Applications",
+              "history_records": []
+            },
+            {
+              "name": "Compact Operators and Fredholm Theory",
+              "history_records": []
+            },
+            {
+              "name": "Spectral Theory Introduction",
+              "history_records": []
+            },
+            {
+              "name": "Self-Adjoint Operator Properties",
+              "history_records": []
+            },
+            {
+              "name": "Unbounded Operator Theory",
+              "history_records": []
+            },
+            {
+              "name": "Banach Algebras and C*-Algebras",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Quantum Mechanics",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Harmonic Analysis",
+          "children": [
+            {
+              "name": "Fourier Transform Theory and Properties",
+              "history_records": []
+            },
+            {
+              "name": "Convolution Operations and Young's Inequality",
+              "history_records": []
+            },
+            {
+              "name": "Hardy Space Theory",
+              "history_records": []
+            },
+            {
+              "name": "BMO Space and John-Nirenberg Inequality",
+              "history_records": []
+            },
+            {
+              "name": "Singular Integral Operator Theory",
+              "history_records": []
+            },
+            {
+              "name": "Littlewood-Paley Theory",
+              "history_records": []
+            },
+            {
+              "name": "Tempered Distributions and Fourier Analysis",
+              "history_records": []
+            },
+            {
+              "name": "Pseudodifferential Operators Introduction",
+              "history_records": []
+            },
+            {
+              "name": "Fourier Restriction Estimates",
+              "history_records": []
+            },
+            {
+              "name": "Wave Packet Decomposition Techniques",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Partial Differential Equations",
+              "history_records": []
+            },
+            {
+              "name": "Wavelet Analysis Basics",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Fourier Analysis",
+          "children": [
+            {
+              "name": "Fourier Series Convergence",
+              "history_records": []
+            },
+            {
+              "name": "Gibbs Phenomenon Analysis and Treatment",
+              "history_records": []
+            },
+            {
+              "name": "Discrete Fourier Transform (DFT)",
+              "history_records": []
+            },
+            {
+              "name": "Fast Fourier Transform (FFT) Algorithm",
+              "history_records": []
+            },
+            {
+              "name": "Fourier Transform Applications in Differential Equations",
+              "history_records": []
+            },
+            {
+              "name": "Sampling Theorem and Signal Reconstruction",
+              "history_records": []
+            },
+            {
+              "name": "Window Functions and Short-Time Fourier Transform",
+              "history_records": []
+            },
+            {
+              "name": "Fourier Analysis Applications in Image Processing",
+              "history_records": []
+            },
+            {
+              "name": "Fractional Fourier Transform",
+              "history_records": []
+            },
+            {
+              "name": "Fourier Analysis Applications in Quantum Mechanics",
+              "history_records": []
+            },
+            {
+              "name": "Multidimensional Fourier Transform",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Data Compression",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Wavelet Analysis",
+          "children": [
+            {
+              "name": "Continuous Wavelet Transform Theory",
+              "history_records": []
+            },
+            {
+              "name": "Discrete Wavelet Transform Construction",
+              "history_records": []
+            },
+            {
+              "name": "Multiresolution Analysis Framework",
+              "history_records": []
+            },
+            {
+              "name": "Scaling Functions and Wavelet Functions",
+              "history_records": []
+            },
+            {
+              "name": "Daubechies Wavelet Construction",
+              "history_records": []
+            },
+            {
+              "name": "Wavelet Packet Analysis and Best Basis Selection",
+              "history_records": []
+            },
+            {
+              "name": "Two-Dimensional Wavelet Transform Applications",
+              "history_records": []
+            },
+            {
+              "name": "Wavelet Threshold Denoising Methods",
+              "history_records": []
+            },
+            {
+              "name": "Wavelet Applications in Image Compression (JPEG2000)",
+              "history_records": []
+            },
+            {
+              "name": "Wavelet Applications in Signal Processing",
+              "history_records": []
+            },
+            {
+              "name": "Wavelet Finite Element Methods",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Financial Time Series",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Numerical Analysis",
+          "children": [
+            {
+              "name": "Interpolation Methods and Spline Functions",
+              "history_records": []
+            },
+            {
+              "name": "Numerical Differentiation and Integration Methods",
+              "history_records": []
+            },
+            {
+              "name": "Numerical Solutions of Linear Equations",
+              "history_records": []
+            },
+            {
+              "name": "Nonlinear Equation Root-Finding Algorithms",
+              "history_records": []
+            },
+            {
+              "name": "Numerical Methods for Eigenvalue Problems",
+              "history_records": []
+            },
+            {
+              "name": "Numerical Solutions of Ordinary Differential Equations",
+              "history_records": []
+            },
+            {
+              "name": "Numerical Discretization of Partial Differential Equations",
+              "history_records": []
+            },
+            {
+              "name": "Finite Difference Method Theory",
+              "history_records": []
+            },
+            {
+              "name": "Finite Element Method Basics",
+              "history_records": []
+            },
+            {
+              "name": "Numerical Optimization Algorithms",
+              "history_records": []
+            },
+            {
+              "name": "Error Analysis and Stability",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Engineering Calculations",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Convex Analysis",
+          "children": [
+            {
+              "name": "Convex Set and Convex Function Determination",
+              "history_records": []
+            },
+            {
+              "name": "Convex Function Continuity and Differentiability",
+              "history_records": []
+            },
+            {
+              "name": "Subgradients and Subdifferential Theory",
+              "history_records": []
+            },
+            {
+              "name": "Convex Conjugate Functions (Legendre Transform)",
+              "history_records": []
+            },
+            {
+              "name": "Separating Hyperplane Theorem Applications",
+              "history_records": []
+            },
+            {
+              "name": "Convex Optimization Problem Theory",
+              "history_records": []
+            },
+            {
+              "name": "Duality Theory Framework",
+              "history_records": []
+            },
+            {
+              "name": "Saddle Point Theorem and Minimax Theory",
+              "history_records": []
+            },
+            {
+              "name": "Convex Analysis Applications in Economics",
+              "history_records": []
+            },
+            {
+              "name": "Variational Inequality Theory",
+              "history_records": []
+            },
+            {
+              "name": "Convex Geometric Analysis Methods",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Machine Learning",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Variational Analysis",
+          "children": [
+            {
+              "name": "Calculus of Variations Fundamental Lemma",
+              "history_records": []
+            },
+            {
+              "name": "Euler-Lagrange Equation Derivation",
+              "history_records": []
+            },
+            {
+              "name": "Hamilton's Principle and Canonical Equations",
+              "history_records": []
+            },
+            {
+              "name": "Jacobi Fields and Conjugate Point Theory",
+              "history_records": []
+            },
+            {
+              "name": "Direct Methods in Calculus of Variations",
+              "history_records": []
+            },
+            {
+              "name": "Γ-Convergence Theory Framework",
+              "history_records": []
+            },
+            {
+              "name": "Subdifferential Calculation Rules",
+              "history_records": []
+            },
+            {
+              "name": "Normal Cones and Tangent Cones Geometry",
+              "history_records": []
+            },
+            {
+              "name": "Set-Valued Analysis Basic Concepts",
+              "history_records": []
+            },
+            {
+              "name": "Nonsmooth Analysis Theory",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Optimal Control",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Materials Science",
+              "history_records": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Partial Differential Equations",
+      "children": [
+        {
+          "name": "Basic Probability Theory",
+          "children": [
+            {
+              "name": "Probability Axiomatic System",
+              "history_records": []
+            },
+            {
+              "name": "Conditional Probability and Bayes' Formula",
+              "history_records": []
+            },
+            {
+              "name": "Random Variables and Their Distributions",
+              "history_records": []
+            },
+            {
+              "name": "Mathematical Expectation and Variance Calculation",
+              "history_records": []
+            },
+            {
+              "name": "Characteristic Functions and Generating Functions",
+              "history_records": []
+            },
+            {
+              "name": "Law of Large Numbers Proof and Applications",
+              "history_records": []
+            },
+            {
+              "name": "Central Limit Theorem Understanding",
+              "history_records": []
+            },
+            {
+              "name": "Multivariate Normal Distribution Properties",
+              "history_records": []
+            },
+            {
+              "name": "Convergence Concepts and Relationships",
+              "history_records": []
+            },
+            {
+              "name": "Conditional Expectation and Prediction",
+              "history_records": []
+            },
+            {
+              "name": "Probability Inequality Applications",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Risk Assessment",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Stochastic Processes",
+          "children": [
+            {
+              "name": "Stochastic Processes Basic Concepts",
+              "history_records": []
+            },
+            {
+              "name": "Poisson Processes and Compound Poisson Processes",
+              "history_records": []
+            },
+            {
+              "name": "Renewal Processes and Renewal Theorems",
+              "history_records": []
+            },
+            {
+              "name": "Markov Chain Transition Probabilities",
+              "history_records": []
+            },
+            {
+              "name": "Brownian Motion Construction and Properties",
+              "history_records": []
+            },
+            {
+              "name": "Martingale Theory Basic Theorems",
+              "history_records": []
+            },
+            {
+              "name": "Stationary Processes and Ergodic Theory",
+              "history_records": []
+            },
+            {
+              "name": "Stochastic Integral Introduction",
+              "history_records": []
+            },
+            {
+              "name": "Stochastic Differential Equation Solving",
+              "history_records": []
+            },
+            {
+              "name": "Branching Processes and Extinction Probability",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Queueing Theory",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Financial Modeling",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Limit Theory",
+          "children": [
+            {
+              "name": "Probability Convergence Modes Comparison",
+              "history_records": []
+            },
+            {
+              "name": "Various Forms of Law of Large Numbers",
+              "history_records": []
+            },
+            {
+              "name": "Central Limit Theorem Extensions",
+              "history_records": []
+            },
+            {
+              "name": "Law of the Iterated Logarithm Proof Techniques",
+              "history_records": []
+            },
+            {
+              "name": "Large Deviation Principle Theory",
+              "history_records": []
+            },
+            {
+              "name": "Empirical Process Theory",
+              "history_records": []
+            },
+            {
+              "name": "Weak Convergence and Tightness",
+              "history_records": []
+            },
+            {
+              "name": "Functional Central Limit Theorem",
+              "history_records": []
+            },
+            {
+              "name": "Extreme Value Theory Distributions",
+              "history_records": []
+            },
+            {
+              "name": "Stable Distribution Properties",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Statistical Inference",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Risk Management",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Markov Processes",
+          "children": [
+            {
+              "name": "Markov Property Verification",
+              "history_records": []
+            },
+            {
+              "name": "Transition Probability Matrix Analysis",
+              "history_records": []
+            },
+            {
+              "name": "State Classification and Periodicity",
+              "history_records": []
+            },
+            {
+              "name": "Stationary Distribution Existence",
+              "history_records": []
+            },
+            {
+              "name": "Reversible Markov Processes",
+              "history_records": []
+            },
+            {
+              "name": "Continuous-Time Markov Chains",
+              "history_records": []
+            },
+            {
+              "name": "Birth-Death Processes and Queueing Models",
+              "history_records": []
+            },
+            {
+              "name": "Hidden Markov Models",
+              "history_records": []
+            },
+            {
+              "name": "Markov Chain Monte Carlo Methods",
+              "history_records": []
+            },
+            {
+              "name": "Diffusion Process Theory",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Natural Language Processing",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Bioinformatics",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Brownian Motion",
+          "children": [
+            {
+              "name": "Brownian Motion Construction Methods",
+              "history_records": []
+            },
+            {
+              "name": "Brownian Motion Sample Properties",
+              "history_records": []
+            },
+            {
+              "name": "First Hitting Time and Maximum Distribution",
+              "history_records": []
+            },
+            {
+              "name": "Reflection Principle Applications",
+              "history_records": []
+            },
+            {
+              "name": "Markov Property of Brownian Motion",
+              "history_records": []
+            },
+            {
+              "name": "Geometric Brownian Motion Models",
+              "history_records": []
+            },
+            {
+              "name": "Brownian Bridge Process Properties",
+              "history_records": []
+            },
+            {
+              "name": "Fractional Brownian Motion Theory",
+              "history_records": []
+            },
+            {
+              "name": "Multi-Parameter Brownian Motion",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Financial Option Pricing",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Physical Diffusion Processes",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Stochastic Computation",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Martingale Theory",
+          "children": [
+            {
+              "name": "Martingale Definition and Basic Examples",
+              "history_records": []
+            },
+            {
+              "name": "Stopping Times and Optional Sampling Theorem",
+              "history_records": []
+            },
+            {
+              "name": "Martingale Convergence Theorem Proof",
+              "history_records": []
+            },
+            {
+              "name": "Submartingale and Supermartingale Decomposition Theory",
+              "history_records": []
+            },
+            {
+              "name": "Doob's Inequality Applications",
+              "history_records": []
+            },
+            {
+              "name": "Local Martingales and Semimartingales Concepts",
+              "history_records": []
+            },
+            {
+              "name": "Martingale Representation Theorem",
+              "history_records": []
+            },
+            {
+              "name": "Girsanov Theorem Understanding",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Stochastic Analysis",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Optimal Stopping Problems",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Mathematical Finance",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Signal Processing",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Measure Theoretic Probability",
+          "children": [
+            {
+              "name": "Measure Space Construction",
+              "history_records": []
+            },
+            {
+              "name": "Measurable Functions and Random Variables",
+              "history_records": []
+            },
+            {
+              "name": "Integral and Expectation Unified Framework",
+              "history_records": []
+            },
+            {
+              "name": "Product Measures and Independence",
+              "history_records": []
+            },
+            {
+              "name": "Radon-Nikodym Derivative",
+              "history_records": []
+            },
+            {
+              "name": "Conditional Expectation Measure Theory Definition",
+              "history_records": []
+            },
+            {
+              "name": "Convergence Theorems Measure Theory Proof",
+              "history_records": []
+            },
+            {
+              "name": "Weak Convergence of Probability Measures",
+              "history_records": []
+            },
+            {
+              "name": "Characteristic Functions Measure Theory Basis",
+              "history_records": []
+            },
+            {
+              "name": "Law of Large Numbers Measure Theory Proof",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Advanced Probability Theory",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Statistical Decision Theory",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Stochastic Analysis",
+          "children": [
+            {
+              "name": "Itô Integral Construction",
+              "history_records": []
+            },
+            {
+              "name": "Itô's Formula and Applications",
+              "history_records": []
+            },
+            {
+              "name": "Existence and Uniqueness of Stochastic Differential Equation Solutions",
+              "history_records": []
+            },
+            {
+              "name": "Diffusion Processes and Generators",
+              "history_records": []
+            },
+            {
+              "name": "Feynman-Kac Formula",
+              "history_records": []
+            },
+            {
+              "name": "Girsanov Measure Transformation",
+              "history_records": []
+            },
+            {
+              "name": "Malliavin Calculus Introduction",
+              "history_records": []
+            },
+            {
+              "name": "Stochastic Partial Differential Equations",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Financial Derivative Pricing",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Physical System Modeling",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Filtering Theory",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Mathematical Biology",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Applied Probability Theory",
+          "children": [
+            {
+              "name": "Queueing System Performance Analysis",
+              "history_records": []
+            },
+            {
+              "name": "Inventory Management Models",
+              "history_records": []
+            },
+            {
+              "name": "Reliability Theory and Systems",
+              "history_records": []
+            },
+            {
+              "name": "Risk Models and Ruin Probability",
+              "history_records": []
+            },
+            {
+              "name": "Stochastic Programming Methods",
+              "history_records": []
+            },
+            {
+              "name": "Monte Carlo Simulation Techniques",
+              "history_records": []
+            },
+            {
+              "name": "Stochastic Network Theory",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Communication Systems",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Supply Chain Management",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Insurance Actuarial Science",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Algorithm Analysis",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Machine Learning",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "High-Dimensional Probability",
+          "children": [
+            {
+              "name": "High-Dimensional Random Vector Properties",
+              "history_records": []
+            },
+            {
+              "name": "Concentration Inequality Theory",
+              "history_records": []
+            },
+            {
+              "name": "Random Matrix Spectral Distribution",
+              "history_records": []
+            },
+            {
+              "name": "Subgaussian and Subexponential Random Variables",
+              "history_records": []
+            },
+            {
+              "name": "High-Dimensional Statistical Inference",
+              "history_records": []
+            },
+            {
+              "name": "Compressed Sensing Theoretical Basis",
+              "history_records": []
+            },
+            {
+              "name": "High-Dimensional Geometric Probability",
+              "history_records": []
+            },
+            {
+              "name": "Applications in High-Dimensional Data Analysis",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Deep Learning Theory",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Covariance Estimation",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Sparse Recovery Problems",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Random Projection Techniques",
+              "history_records": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Operations Research",
+      "children": [
+        {
+          "name": "Ordinary Differential Equations",
+          "children": [
+            {
+              "name": "First-Order ODE Solution Methods",
+              "history_records": []
+            },
+            {
+              "name": "General Solution Structure of Higher-Order Linear ODEs",
+              "history_records": []
+            },
+            {
+              "name": "Solution of Linear ODEs with Constant Coefficients",
+              "history_records": []
+            },
+            {
+              "name": "Power Series Solution for Variable Coefficient Equations",
+              "history_records": []
+            },
+            {
+              "name": "Existence and Uniqueness of Initial Value Problems",
+              "history_records": []
+            },
+            {
+              "name": "Solution Extension and Maximum Existence Interval",
+              "history_records": []
+            },
+            {
+              "name": "Stability Theory and Lyapunov Methods",
+              "history_records": []
+            },
+            {
+              "name": "Phase Plane Analysis and Singular Point Classification",
+              "history_records": []
+            },
+            {
+              "name": "Boundary Value Problems and Green's Functions",
+              "history_records": []
+            },
+            {
+              "name": "Sturm-Liouville Theory",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Mechanical Vibration Systems",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Population Dynamics",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Partial Differential Equations",
+          "children": [
+            {
+              "name": "First-Order PDE Method of Characteristics",
+              "history_records": []
+            },
+            {
+              "name": "Second-Order PDE Classification and Canonical Forms",
+              "history_records": []
+            },
+            {
+              "name": "Wave Equation and d'Alembert's Solution",
+              "history_records": []
+            },
+            {
+              "name": "Heat Equation Fundamental Solution",
+              "history_records": []
+            },
+            {
+              "name": "Laplace's Equation and Harmonic Functions",
+              "history_records": []
+            },
+            {
+              "name": "Separation of Variables Method",
+              "history_records": []
+            },
+            {
+              "name": "Green's Function Method",
+              "history_records": []
+            },
+            {
+              "name": "Maximum Principle and Applications",
+              "history_records": []
+            },
+            {
+              "name": "Energy Estimates and Uniqueness",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Electromagnetic Field Theory",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Fluid Mechanics",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Financial Derivative Pricing",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Integral Equations",
+          "children": [
+            {
+              "name": "Volterra Equation Solving",
+              "history_records": []
+            },
+            {
+              "name": "Fredholm Equation Theory",
+              "history_records": []
+            },
+            {
+              "name": "Integral Equation Numerical Methods",
+              "history_records": []
+            },
+            {
+              "name": "Integro-Differential Equation Solving",
+              "history_records": []
+            },
+            {
+              "name": "Singular Integral Equation Treatment",
+              "history_records": []
+            },
+            {
+              "name": "Integral Transform Solutions",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Boundary Value Problems",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Potential Theory",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Scattering Theory",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Population Models",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Medical Imaging",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Signal Processing",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Delay Differential Equations",
+          "children": [
+            {
+              "name": "Time-Delay System Stability Analysis",
+              "history_records": []
+            },
+            {
+              "name": "Characteristic Equation and Root Distribution",
+              "history_records": []
+            },
+            {
+              "name": "Stepwise Numerical Solution",
+              "history_records": []
+            },
+            {
+              "name": "Functional Differential Equation Theory",
+              "history_records": []
+            },
+            {
+              "name": "Neutral Delay Equations",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Biological Rhythm Models",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Control Systems",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Epidemiological Models",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Neural Network Dynamics",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Economic Expectation Models",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Mechanical Vibration Systems",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Ecological Systems",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Stochastic Differential Equations",
+          "children": [
+            {
+              "name": "Existence and Uniqueness of Itô SDE Solutions",
+              "history_records": []
+            },
+            {
+              "name": "Itô's Formula and Solution Properties",
+              "history_records": []
+            },
+            {
+              "name": "Fokker-Planck Equation Derivation",
+              "history_records": []
+            },
+            {
+              "name": "Numerical Solution Euler-Maruyama Method",
+              "history_records": []
+            },
+            {
+              "name": "Milstein Higher-Order Method",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Financial Option Pricing",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Physical Brownian Motion",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Biological Population Dynamics",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Filtering Theory",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Stochastic Control",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Climate Models",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Neural Network Training",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Systems of Differential Equations",
+          "children": [
+            {
+              "name": "Linear System Fundamental Solution Matrix",
+              "history_records": []
+            },
+            {
+              "name": "Solution of Linear Systems with Constant Coefficients",
+              "history_records": []
+            },
+            {
+              "name": "Nonlinear System Linearization",
+              "history_records": []
+            },
+            {
+              "name": "Limit Cycles and Periodic Solutions",
+              "history_records": []
+            },
+            {
+              "name": "Hopf Bifurcation Theory",
+              "history_records": []
+            },
+            {
+              "name": "Qualitative Theory of Dynamical Systems",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Ecological Competition Models",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Chemical Reaction Kinetics",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Circuit System Analysis",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Epidemic Spread Models",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Robot Control",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Economic Equilibrium Analysis",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Nonlinear Differential Equations",
+          "children": [
+            {
+              "name": "Phase Portrait Analysis and Trajectory Properties",
+              "history_records": []
+            },
+            {
+              "name": "Equilibrium Point Stability Determination",
+              "history_records": []
+            },
+            {
+              "name": "Center Manifold Theory",
+              "history_records": []
+            },
+            {
+              "name": "Homoclinic and Heteroclinic Orbits",
+              "history_records": []
+            },
+            {
+              "name": "Chaos Phenomena and Strange Attractors",
+              "history_records": []
+            },
+            {
+              "name": "Perturbation Theory and Asymptotic Expansions",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Soliton Theory",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Nonlinear Waves",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Nonlinear Optics",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Biological Pattern Formation",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Plasma Physics",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Structural Mechanics",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Numerical Differential Equations",
+          "children": [
+            {
+              "name": "Finite Difference Method Construction",
+              "history_records": []
+            },
+            {
+              "name": "Finite Element Method Basics",
+              "history_records": []
+            },
+            {
+              "name": "Spectral Methods and High-Order Schemes",
+              "history_records": []
+            },
+            {
+              "name": "Runge-Kutta Methods",
+              "history_records": []
+            },
+            {
+              "name": "Multistep Method Stability Analysis",
+              "history_records": []
+            },
+            {
+              "name": "Numerical Treatment of Stiff Equations",
+              "history_records": []
+            },
+            {
+              "name": "Adaptive Step Size Control",
+              "history_records": []
+            },
+            {
+              "name": "Domain Decomposition Methods",
+              "history_records": []
+            },
+            {
+              "name": "Multigrid Techniques",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Computational Fluid Dynamics",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Structural Analysis",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Climate Simulation",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Elliptic Equations",
+          "children": [
+            {
+              "name": "Laplace Equation Fundamental Solution",
+              "history_records": []
+            },
+            {
+              "name": "Poisson Equation Solution Methods",
+              "history_records": []
+            },
+            {
+              "name": "Maximum Principle and Applications",
+              "history_records": []
+            },
+            {
+              "name": "Harmonic Function Properties",
+              "history_records": []
+            },
+            {
+              "name": "Well-Posedness of Boundary Value Problems",
+              "history_records": []
+            },
+            {
+              "name": "Variational Form and Weak Solutions",
+              "history_records": []
+            },
+            {
+              "name": "Regularity Theory",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Electrostatics",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Elasticity Theory",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Geometric Analysis",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Image Processing",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Medical Imaging",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Parabolic Equations",
+          "children": [
+            {
+              "name": "Heat Equation Fundamental Solution Properties",
+              "history_records": []
+            },
+            {
+              "name": "Maximum Principle and Comparison Principle",
+              "history_records": []
+            },
+            {
+              "name": "Initial-Boundary Value Problem Solving",
+              "history_records": []
+            },
+            {
+              "name": "Semigroup Method Theory",
+              "history_records": []
+            },
+            {
+              "name": "A Priori Estimate Techniques",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Heat Conduction",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Diffusion Processes",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Financial Black-Scholes Model",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Biological Diffusion Models",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Image Denoising",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Materials Science",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Environmental Science",
+              "history_records": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Probability Theory",
+      "children": [
+        {
+          "name": "Linear Programming",
+          "children": [
+            {
+              "name": "Simplex Method Principles and Steps",
+              "history_records": []
+            },
+            {
+              "name": "Duality Theory Framework",
+              "history_records": []
+            },
+            {
+              "name": "Sensitivity Analysis and Parametric Programming",
+              "history_records": []
+            },
+            {
+              "name": "Interior Point Method Theory and Implementation",
+              "history_records": []
+            },
+            {
+              "name": "Transportation Problems and Assignment Problems",
+              "history_records": []
+            },
+            {
+              "name": "Network Flow Problem Modeling",
+              "history_records": []
+            },
+            {
+              "name": "Integer Programming Relaxation Techniques",
+              "history_records": []
+            },
+            {
+              "name": "Column Generation Methods",
+              "history_records": []
+            },
+            {
+              "name": "Decomposition Algorithm Principles",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Resource Allocation",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Production Planning",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Financial Portfolio Optimization",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Integer Programming",
+          "children": [
+            {
+              "name": "Branch and Bound Method Design",
+              "history_records": []
+            },
+            {
+              "name": "Cutting Plane Method Theory and Implementation",
+              "history_records": []
+            },
+            {
+              "name": "Mixed Integer Programming Solving",
+              "history_records": []
+            },
+            {
+              "name": "0-1 Programming Modeling Techniques",
+              "history_records": []
+            },
+            {
+              "name": "Set Covering and Packing Problems",
+              "history_records": []
+            },
+            {
+              "name": "Traveling Salesman Problem Algorithms",
+              "history_records": []
+            },
+            {
+              "name": "Vehicle Routing Problem Optimization",
+              "history_records": []
+            },
+            {
+              "name": "Scheduling Problem Modeling and Solving",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Logistics Networks",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Facility Location",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Chip Design",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Project Management",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Nonlinear Programming",
+          "children": [
+            {
+              "name": "Optimality Conditions (KKT Conditions)",
+              "history_records": []
+            },
+            {
+              "name": "Convex Optimization Theory Framework",
+              "history_records": []
+            },
+            {
+              "name": "Gradient Descent Method Convergence",
+              "history_records": []
+            },
+            {
+              "name": "Newton's Method and Quasi-Newton Methods",
+              "history_records": []
+            },
+            {
+              "name": "Conjugate Gradient Method Implementation",
+              "history_records": []
+            },
+            {
+              "name": "Trust Region Method Theory",
+              "history_records": []
+            },
+            {
+              "name": "Sequential Quadratic Programming (SQP)",
+              "history_records": []
+            },
+            {
+              "name": "Penalty Function and Barrier Function Methods",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Engineering Design",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Machine Learning Loss Function Optimization",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Power System Optimization",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Chemical Process Optimization",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Dynamic Programming",
+          "children": [
+            {
+              "name": "Bellman's Optimality Principle",
+              "history_records": []
+            },
+            {
+              "name": "Value Iteration and Policy Iteration",
+              "history_records": []
+            },
+            {
+              "name": "Stochastic Dynamic Programming",
+              "history_records": []
+            },
+            {
+              "name": "Markov Decision Processes",
+              "history_records": []
+            },
+            {
+              "name": "Approximate Dynamic Programming Methods",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Resource Management",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Inventory Control",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Investment Decisions",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Path Planning",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Robot Control",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Game Theory",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Artificial Intelligence",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Game Theory",
+          "children": [
+            {
+              "name": "Nash Equilibrium Existence",
+              "history_records": []
+            },
+            {
+              "name": "Mixed Strategy Equilibrium Computation",
+              "history_records": []
+            },
+            {
+              "name": "Cooperative Game Theory",
+              "history_records": []
+            },
+            {
+              "name": "Non-cooperative Game Analysis",
+              "history_records": []
+            },
+            {
+              "name": "Evolutionary Game Dynamics",
+              "history_records": []
+            },
+            {
+              "name": "Repeated Games and Reputation",
+              "history_records": []
+            },
+            {
+              "name": "Auction Theory and Mechanism Design",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Economics",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Political Science",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Biology",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Computer Science",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Social Networks",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Graph Theory Optimization",
+          "children": [
+            {
+              "name": "Shortest Path Algorithms (Dijkstra, Floyd)",
+              "history_records": []
+            },
+            {
+              "name": "Minimum Spanning Tree Algorithms",
+              "history_records": []
+            },
+            {
+              "name": "Network Maximum Flow Problems",
+              "history_records": []
+            },
+            {
+              "name": "Minimum Cost Flow Problems",
+              "history_records": []
+            },
+            {
+              "name": "Matching Theory and Algorithms",
+              "history_records": []
+            },
+            {
+              "name": "Coloring Problems and Algorithms",
+              "history_records": []
+            },
+            {
+              "name": "Planar Graphs and Duality Theory",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Communication Networks",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Transportation Networks",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Social Networks",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Circuit Design",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Bioinformatics",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Network Flow Optimization",
+          "children": [
+            {
+              "name": "Max-Flow Min-Cut Theorem",
+              "history_records": []
+            },
+            {
+              "name": "Ford-Fulkerson Algorithm",
+              "history_records": []
+            },
+            {
+              "name": "Push-Relabel Algorithm",
+              "history_records": []
+            },
+            {
+              "name": "Multi-Commodity Flow Problems",
+              "history_records": []
+            },
+            {
+              "name": "Capacity Network Design",
+              "history_records": []
+            },
+            {
+              "name": "Stochastic Network Flow Problems",
+              "history_records": []
+            },
+            {
+              "name": "Dynamic Network Flow Optimization",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Logistics Distribution",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Communication Routing",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Power Networks",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Water Systems",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Emergency Management",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Queueing Theory",
+          "children": [
+            {
+              "name": "Little's Formula and Applications",
+              "history_records": []
+            },
+            {
+              "name": "M/M/1 Queueing System Analysis",
+              "history_records": []
+            },
+            {
+              "name": "M/G/1 Queueing System Analysis",
+              "history_records": []
+            },
+            {
+              "name": "Queueing Network Theory",
+              "history_records": []
+            },
+            {
+              "name": "Birth-Death Process Modeling",
+              "history_records": []
+            },
+            {
+              "name": "Priority Queueing Systems",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Service Systems",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Manufacturing Systems",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Communication Systems",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Healthcare Systems",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Transportation Systems",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Computer Systems",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Inventory Theory",
+          "children": [
+            {
+              "name": "Economic Order Quantity (EOQ) Model",
+              "history_records": []
+            },
+            {
+              "name": "Newsvendor Model and Extensions",
+              "history_records": []
+            },
+            {
+              "name": "(s,S) Inventory Policy",
+              "history_records": []
+            },
+            {
+              "name": "Multi-Echelon Inventory Systems",
+              "history_records": []
+            },
+            {
+              "name": "Stochastic Inventory Models",
+              "history_records": []
+            },
+            {
+              "name": "Perishable Goods Inventory",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Supply Chain Management",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Retail Industry",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Manufacturing",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Medical Supplies Management",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Cold Chain Logistics",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Emergency Supplies Reserve",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Decision Analysis",
+          "children": [
+            {
+              "name": "Expected Utility Theory",
+              "history_records": []
+            },
+            {
+              "name": "Multi-Attribute Decision Making Methods",
+              "history_records": []
+            },
+            {
+              "name": "Risk Analysis and Assessment",
+              "history_records": []
+            },
+            {
+              "name": "Decision Tree Construction and Analysis",
+              "history_records": []
+            },
+            {
+              "name": "Bayesian Decision Theory",
+              "history_records": []
+            },
+            {
+              "name": "Group Decision Making and Negotiation",
+              "history_records": []
+            },
+            {
+              "name": "Fuzzy Decision Methods",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Investment Decisions",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Project Management",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Policy Making",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Medical Decision Making",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Environmental Management",
+              "history_records": []
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Statistics",
+      "children": [
+        {
+          "name": "Descriptive Statistics",
+          "children": [
+            {
+              "name": "Data Central Tendency Measures (Mean, Median, Mode)",
+              "history_records": []
+            },
+            {
+              "name": "Data Dispersion Measures (Variance, Standard Deviation, Interquartile Range)",
+              "history_records": []
+            },
+            {
+              "name": "Data Distribution Shape Analysis (Skewness, Kurtosis)",
+              "history_records": []
+            },
+            {
+              "name": "Statistical Chart Drawing and Interpretation (Histogram, Box Plot, Scatter Plot)",
+              "history_records": []
+            },
+            {
+              "name": "Correlation Analysis and Covariance Calculation",
+              "history_records": []
+            },
+            {
+              "name": "Data Standardization and Normalization Methods",
+              "history_records": []
+            },
+            {
+              "name": "Outlier Detection and Treatment",
+              "history_records": []
+            },
+            {
+              "name": "Data Grouping and Frequency Distribution",
+              "history_records": []
+            },
+            {
+              "name": "Exploratory Data Analysis (EDA) Techniques",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Business Data Analysis",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Social Science Research",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Quality Control",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Inferential Statistics",
+          "children": [
+            {
+              "name": "Sampling Distribution Theory (Normal, t, Chi-square Distributions)",
+              "history_records": []
+            },
+            {
+              "name": "Point Estimation Methods and Properties (Method of Moments, Maximum Likelihood Estimation)",
+              "history_records": [
+                "2025-11-26 14:04:03",
+                "2025-11-26 14:05:05"
+              ]
+            },
+            {
+              "name": "Interval Estimation Construction and Interpretation",
+              "history_records": []
+            },
+            {
+              "name": "Estimator Evaluation Criteria (Unbiasedness, Efficiency, Consistency)",
+              "history_records": []
+            },
+            {
+              "name": "Bootstrap Resampling Methods",
+              "history_records": []
+            },
+            {
+              "name": "Jackknife Estimation Technique",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Opinion Polls",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Market Research",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Medical Research",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Economic Empirical Analysis",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Social Science Inference",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Engineering Reliability Assessment",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Regression Analysis",
+          "children": [
+            {
+              "name": "Simple Linear Regression Models",
+              "history_records": []
+            },
+            {
+              "name": "Multiple Linear Regression Analysis",
+              "history_records": []
+            },
+            {
+              "name": "Regression Diagnostics and Residual Analysis",
+              "history_records": []
+            },
+            {
+              "name": "Variable Selection Methods (Stepwise Regression, LASSO)",
+              "history_records": []
+            },
+            {
+              "name": "Multicollinearity Detection and Treatment",
+              "history_records": []
+            },
+            {
+              "name": "Heteroscedasticity Testing and Correction",
+              "history_records": []
+            },
+            {
+              "name": "Logistic Regression and Probit Models",
+              "history_records": []
+            },
+            {
+              "name": "Poisson Regression and Count Data",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Econometric Models",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Financial Risk Modeling",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Medical Prognosis Analysis",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Marketing Response Models",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Analysis of Variance",
+          "children": [
+            {
+              "name": "One-Way Analysis of Variance",
+              "history_records": []
+            },
+            {
+              "name": "Two-Way Analysis of Variance (No Interaction)",
+              "history_records": []
+            },
+            {
+              "name": "Two-Way Analysis of Variance (With Interaction)",
+              "history_records": []
+            },
+            {
+              "name": "Multiple Comparison Tests",
+              "history_records": []
+            },
+            {
+              "name": "Homogeneity of Variance Tests",
+              "history_records": []
+            },
+            {
+              "name": "Randomized Block Design Analysis",
+              "history_records": []
+            },
+            {
+              "name": "Analysis of Covariance (ANCOVA)",
+              "history_records": []
+            },
+            {
+              "name": "Repeated Measures Analysis of Variance",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Agricultural Experimental Design",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Industrial Quality Control",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Psychological Experiment Design",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Medical Clinical Trials",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Hypothesis Testing",
+          "children": [
+            {
+              "name": "Hypothesis Testing Basic Principles and Steps",
+              "history_records": []
+            },
+            {
+              "name": "One-Sample t-Test and z-Test",
+              "history_records": []
+            },
+            {
+              "name": "Two-Sample Mean Comparison Tests",
+              "history_records": []
+            },
+            {
+              "name": "Homogeneity of Variance F-Test",
+              "history_records": []
+            },
+            {
+              "name": "Proportion Tests and Contingency Table Analysis",
+              "history_records": []
+            },
+            {
+              "name": "Nonparametric Test Methods",
+              "history_records": []
+            },
+            {
+              "name": "Test Power and Sample Size Calculation",
+              "history_records": []
+            },
+            {
+              "name": "Correct Understanding and Application of p-Values",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Product Quality Testing",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Medical Diagnostic Tests",
+              "history_records": []
+            },
+            {
+              "name": "Applications in A/B Testing",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Scientific Research Validation",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Time Series Analysis",
+          "children": [
+            {
+              "name": "Time Series Stationarity Tests",
+              "history_records": []
+            },
+            {
+              "name": "Autocorrelation and Partial Autocorrelation Analysis",
+              "history_records": []
+            },
+            {
+              "name": "ARIMA Model Identification and Estimation",
+              "history_records": []
+            },
+            {
+              "name": "Seasonal Time Series Models",
+              "history_records": []
+            },
+            {
+              "name": "Time Series Forecasting Methods",
+              "history_records": []
+            },
+            {
+              "name": "ARCH/GARCH Volatility Modeling",
+              "history_records": []
+            },
+            {
+              "name": "Vector Autoregression (VAR) Models",
+              "history_records": []
+            },
+            {
+              "name": "Cointegration and Error Correction Models",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Macroeconomic Forecasting",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Financial Asset Pricing",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Sales Forecasting",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Climate Data Analysis",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Multivariate Statistical Analysis",
+          "children": [
+            {
+              "name": "Principal Component Analysis (PCA) Dimensionality Reduction",
+              "history_records": []
+            },
+            {
+              "name": "Factor Analysis and Interpretation",
+              "history_records": []
+            },
+            {
+              "name": "Cluster Analysis (K-means, Hierarchical Clustering)",
+              "history_records": []
+            },
+            {
+              "name": "Discriminant Analysis and Classification",
+              "history_records": []
+            },
+            {
+              "name": "Canonical Correlation Analysis",
+              "history_records": []
+            },
+            {
+              "name": "Multidimensional Scaling (MDS)",
+              "history_records": []
+            },
+            {
+              "name": "Correspondence Analysis Technique",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Customer Segmentation",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Gene Expression Data Analysis",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Image Recognition",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Text Mining",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Psychological Scale Construction",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Bayesian Statistics",
+          "children": [
+            {
+              "name": "Bayes' Theorem and Prior Distribution Selection",
+              "history_records": []
+            },
+            {
+              "name": "Posterior Distribution Calculation and Properties",
+              "history_records": []
+            },
+            {
+              "name": "Conjugate Prior Distribution Theory",
+              "history_records": []
+            },
+            {
+              "name": "Bayesian Model Comparison and Selection",
+              "history_records": []
+            },
+            {
+              "name": "Markov Chain Monte Carlo (MCMC) Methods",
+              "history_records": []
+            },
+            {
+              "name": "Gibbs Sampling Algorithm Implementation",
+              "history_records": []
+            },
+            {
+              "name": "Metropolis-Hastings Algorithm",
+              "history_records": []
+            },
+            {
+              "name": "Bayesian Hierarchical Models",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Machine Learning Classification",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Medical Diagnostic Decisions",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Financial Risk Management",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Natural Language Processing",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Nonparametric Statistics",
+          "children": [
+            {
+              "name": "Sign Test and Wilcoxon Signed-Rank Test",
+              "history_records": []
+            },
+            {
+              "name": "Mann-Whitney U Test",
+              "history_records": []
+            },
+            {
+              "name": "Kruskal-Wallis H Test",
+              "history_records": []
+            },
+            {
+              "name": "Friedman Test Method",
+              "history_records": []
+            },
+            {
+              "name": "Spearman Rank Correlation",
+              "history_records": []
+            },
+            {
+              "name": "Kendall's Tau Correlation Coefficient",
+              "history_records": []
+            },
+            {
+              "name": "Kernel Density Estimation Methods",
+              "history_records": []
+            },
+            {
+              "name": "Nonparametric Regression Techniques",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Social Science Research",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Biological Ranking Data",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Engineering Reliability Data Analysis",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Environmental Monitoring Data",
+              "history_records": []
+            }
+          ]
+        },
+        {
+          "name": "Experimental Design",
+          "children": [
+            {
+              "name": "Completely Randomized Design",
+              "history_records": []
+            },
+            {
+              "name": "Randomized Block Design Principles",
+              "history_records": []
+            },
+            {
+              "name": "Latin Square Design Method",
+              "history_records": []
+            },
+            {
+              "name": "Factorial Design and Interaction Analysis",
+              "history_records": []
+            },
+            {
+              "name": "Response Surface Methodology (RSM)",
+              "history_records": []
+            },
+            {
+              "name": "Mixture Design Techniques",
+              "history_records": []
+            },
+            {
+              "name": "Orthogonal Arrays and Taguchi Methods",
+              "history_records": []
+            },
+            {
+              "name": "Repeated Measures Design",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Industrial Process Optimization",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Agricultural Variety Trials",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Pharmaceutical New Product Development",
+              "history_records": []
+            },
+            {
+              "name": "Applications in Product Quality Improvement",
+              "history_records": []
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
